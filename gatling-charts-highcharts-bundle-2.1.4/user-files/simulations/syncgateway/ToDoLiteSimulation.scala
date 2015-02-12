@@ -1,3 +1,4 @@
+package syncgateway
 
 import scala.concurrent.duration._
 
