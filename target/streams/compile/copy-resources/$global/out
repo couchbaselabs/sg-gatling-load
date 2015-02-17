@@ -1,0 +1,4 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/Users/andy/Projects/sg-gatling-load/src/main/resources/application.conf,/Users/andy/Projects/sg-gatling-load/target/scala-2.9.3-RC1/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/Users/andy/Projects/sg-gatling-load/src/main/resources/gatling.conf,/Users/andy/Projects/sg-gatling-load/target/scala-2.9.3-RC1/classes/gatling.conf)[0m
+[0m[[0mdebug[0m] [0m	(/Users/andy/Projects/sg-gatling-load/src/main/resources/logback.xml,/Users/andy/Projects/sg-gatling-load/target/scala-2.9.3-RC1/classes/logback.xml)[0m
