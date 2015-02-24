@@ -14,6 +14,13 @@ The ansible playbook steps are as follows:
 
 # Running a load test
 
+## Pre Requisites
+
+  1. A Sync Gateway Cluster with a single entry point via a reverse proxy / load balancer
+  2. A named Sync Gateway DB with a sync function that matches the scenario that is being load tested.
+  3. Most tests will expect named user accounts to be pre-defined in Sync Gateway
+  4. Pre-load any data required by the load test
+
 ## Setup
 
   1. A host that will manage the gatling test clients
