@@ -14,16 +14,39 @@ The ansible playbook steps are as follows:
 
 # Running a load test
 
-Pre Requisites
+## Pre Requisites
 
-One or more servers for running the load test clients, the servers may run either of the following OS's
+  1. A host that will manage the gatling test clients
 
-  1. Ubuntu 14.04
-  2. RedHat/Centos 6.5
+  This host must have [ansible](http://www.ansible.com/home) installed
+  
+  Clone this repo onto the management host using the collowing command:
+  
+  ```
+  git clone https://github.com/couchbaselabs/sg-gatling-load.git
+  ```
 
-These additonal steps must be run on Centos 6.5 to allow docker to run:
+  2. One or more servers for running the load test clients, the servers may run either of the following OS's
+
+    1. Ubuntu 14.04
+    2. RedHat/Centos 6.5
+
+    These additonal steps must be run on Centos 6.5 to allow docker to run:
 ```
     $ sudo yum-config-manager --enable public_ol6_latest
     $ sudo yum install device-mapper-event-libs)
 ```
+  Create a common user account and password on each server, ensure that the user is a member of the "sudo" group:
+  
+  ```
+  $ sudo useradd -m <username>
+  $ sudo passwd <username>
+  $ sudo sudo adduser <username> sudo
+  ```
+  Add each hosts IP address to the [sg-gatling-load] section of the /etc/ansible/hosts file on the management host.
+  
+On the management host change directory to where sg-gatling-load was cloned and run the following command
 
+```
+$ ansible-playbook --ask-pass --ask-sudo-pass gateloadclients.yml
+```
