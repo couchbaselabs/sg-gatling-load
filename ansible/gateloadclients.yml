@@ -1,0 +1,17 @@
+---
+- hosts: sg-gatling-load
+  remote_user: notroot
+  sudo: yes
+  roles:
+    - { role: mhamrah.docker }
+  tasks:
+  - name: ensure docker gatling container is running
+    local_action:
+      sudo: False
+      module: docker
+      docker_url: "tcp://somehost:4243"
+      image: "Maluuba/docker-files"
+      name: "gatling-client"
+      state: "present"
+      publish_all_ports: yes
+

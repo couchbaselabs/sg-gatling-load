@@ -2,31 +2,14 @@
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
 [0m[[0mdebug[0m] [0m	removed:Set()[0m
 [0m[[0mdebug[0m] [0m	added: Set()[0m
-[0m[[0mdebug[0m] [0m	modified: Set(/Users/andy/Projects/sg-gatling-load/project/Build.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
 [0m[[0mdebug[0m] [0mRemoved products: Set()[0m
 [0m[[0mdebug[0m] [0mModified external sources: Set()[0m
 [0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/Users/andy/Projects/sg-gatling-load/project/Build.scala)[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set()[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
 [0m[[0mdebug[0m] [0m	product: Set()[0m
 [0m[[0mdebug[0m] [0m	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/Users/andy/Projects/sg-gatling-load/project/Build.scala)[0m
-[0m[[0mdebug[0m] [0mRecompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
-[0m[[0minfo[0m] [0mCompiling 1 Scala source to /Users/andy/Projects/sg-gatling-load/project/target/scala-2.9.2/sbt-0.12/classes...[0m
-[0m[[0mdebug[0m] [0mRunning cached compiler 4a7d40a4, interfacing (CompilerInterface) with Scala compiler version 2.9.2[0m
-[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
-[0m[[0mdebug[0m] [0m	-d[0m
-[0m[[0mdebug[0m] [0m	/Users/andy/Projects/sg-gatling-load/project/target/scala-2.9.2/sbt-0.12/classes[0m
-[0m[[0mdebug[0m] [0m	-bootclasspath[0m
-[0m[[0mdebug[0m] [0m	/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home/jre/classes:/Users/andy/.sbt/boot/scala-2.9.2/lib/scala-library.jar[0m
-[0m[[0mdebug[0m] [0m	-classpath[0m
-[0m[[0mdebug[0m] [0m	/Users/andy/Projects/sg-gatling-load/project/target/scala-2.9.2/sbt-0.12/classes:/Users/andy/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbteclipse/sbteclipse-plugin/jars/sbteclipse-plugin-2.1.0.jar:/Users/andy/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbteclipse/sbteclipse-core/jars/sbteclipse-core-2.1.0.jar:/Users/andy/.ivy2/cache/org.scalaz/scalaz-core_2.9.2/jars/scalaz-core_2.9.2-6.0.4.jar:/Users/andy/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.startscript/xsbt-start-script-plugin/jars/xsbt-start-script-plugin-0.5.3.jar:/Users/andy/.ivy2/cache/scala_2.9.2/sbt_0.12/cc.spray/sbt-revolver/jars/sbt-revolver-0.6.1.jar:/Users/andy/.ivy2/cache/scala_2.9.2/sbt_0.12/com.eed3si9n/sbt-assembly/jars/sbt-assembly-0.8.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/main/jars/main-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/actions/jars/actions-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/classpath/jars/classpath-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/launcher-interface/jars/launcher-interface-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/interface/jars/interface-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/io/jars/io-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/control/jars/control-0.12.4.jar:/Users/andy/.sbt/boot/scala-2.9.2/lib/scala-compiler.jar:/Users/andy/.ivy2/cache/org.scala-sbt/completion/jars/completion-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/collections/jars/collections-0.12.4.jar:/Users/andy/.ivy2/cache/jline/jline/jars/jline-1.0.jar:/Users/andy/.ivy2/cache/org.scala-sbt/api/jars/api-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/compiler-integration/jars/compiler-integration-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/incremental-compiler/jars/incremental-compiler-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/logging/jars/logging-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/process/jars/process-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/compile/jars/compile-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/persist/jars/persist-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-tools.sbinary/sbinary_2.9.0/jars/sbinary_2.9.0-0.4.0.jar:/Users/andy/.ivy2/cache/org.scala-sbt/classfile/jars/classfile-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/compiler-ivy-integration/jars/compiler-ivy-integration-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/ivy/jars/ivy-0.12.4.jar:/Users/andy/.ivy2/cache/org.apache.ivy/ivy/jars/ivy-2.3.0-rc1.jar:/Users/andy/.ivy2/cache/com.jcraft/jsch/jars/jsch-0.1.46.jar:/Users/andy/.ivy2/cache/commons-httpclient/commons-httpclient/jars/commons-httpclient-3.1.jar:/Users/andy/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.0.4.jar:/Users/andy/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.2.jar:/Users/andy/.ivy2/cache/org.scala-sbt/run/jars/run-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/task-system/jars/task-system-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/tasks/jars/tasks-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/tracking/jars/tracking-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/cache/jars/cache-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/testing/jars/testing-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/test-agent/jars/test-agent-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-tools.testing/test-interface/jars/test-interface-0.5.jar:/Users/andy/.ivy2/cache/org.scala-sbt/command/jars/command-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/compiler-interface/jars/compiler-interface-bin-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/compiler-interface/jars/compiler-interface-src-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/precompiled-2_8_2/jars/compiler-interface-bin-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/precompiled-2_9_3/jars/compiler-interface-bin-0.12.4.jar:/Users/andy/.ivy2/cache/org.scala-sbt/precompiled-2_10_1/jars/compiler-interface-bin-0.12.4.jar[0m
-[0m[[0mdebug[0m] [0mScala compilation took 4.125795 s[0m
-[0m[[0mdebug[0m] [0mStep 2 changed sources and immdediate dependencies:[0m
-[0m[[0mdebug[0m] [0m	Set()[0m
-[0m[[0mdebug[0m] [0mNon-trivial strongly connected components: [0m
-[0m[[0mdebug[0m] [0m	[0m
-[0m[[0mdebug[0m] [0mStep 2 invalidated sources:[0m
-[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set()[0m
