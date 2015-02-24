@@ -14,7 +14,7 @@ The ansible playbook steps are as follows:
 
 # Running a load test
 
-## Pre Requisites
+## Setup
 
   1. A host that will manage the gatling test clients
 
@@ -47,6 +47,10 @@ The ansible playbook steps are as follows:
   
 On the management host change directory to where sg-gatling-load was cloned and run the following command
 
+## Run Test
+
 ```
 $ ansible-playbook --ask-pass --ask-sudo-pass gateloadclients.yml
 ```
+
+## Generate Report
