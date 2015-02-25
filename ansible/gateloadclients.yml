@@ -9,7 +9,7 @@
     local_action:
       module: docker
       docker_url: "tcp://{{ inventory_hostname }}:4243"
-      image: "Maluuba/docker-files"
+      image: "maluuba/gatling"
       name: "gatling-client"
       state: present
       publish_all_ports: yes
