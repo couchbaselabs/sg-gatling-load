@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>io.gatling</groupId>
+	<artifactId>gatling-maven-plugin-demo</artifactId>
+	<version>2.0.3</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<gatling.version>${project.version}</gatling.version>
+    	<gatling-plugin.version>2.0.0</gatling-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>${gatling.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+				<version>${gatling-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<!-- Default values -->
+							<!--<configFolder>src/test/resources</configFolder-->
+							<dataFolder>src/test/resources/data</dataFolder>
+							<resultsFolder>target/gatling/results</resultsFolder>
+							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
+							<simulationsFolder>src/test/scala</simulationsFolder>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -5,6 +5,31 @@
   roles:
     - { role: mhamrah.docker }
   tasks:
+  - name: Create directory for test configutations
+    file: path=/etc/sg-gatling-load/conf state=directory
+
+  - name: Create directory for test results
+    file: path=/etc/sg-gatling-load/results state=directory
+
+  - name: Create directory for test user-files
+    file: path=/etc/sg-gatling-load/user-files state=directory
+
+  - name: deploy creators role gatling scenarios
+    file: path=/etc/sg-gatling-load/creators state=directory
+    when: "'sg-gatling-load-creators' in group_names"
+
+  - name: deploy consumers role gatling scenarios
+    file: path=/etc/sg-gatling-load/creators state=directory
+    when: "'sg-gatling-load-consumers' in group_names"
+
+  - name: deploy socialisers role gatling scenarios
+    file: path=/etc/sg-gatling-load/socialisers state=directory
+    when: "'sg-gatling-load-socialisers' in group_names"
+
+  - name: deploy admins role gatling scenarios
+    file: path=/etc/sg-gatling-load/admins state=directory
+    when: "'sg-gatling-load-admins' in group_names"
+
   - name: ensure docker gatling container is running
     local_action:
       module: docker
@@ -13,5 +38,6 @@
       name: "gatling-client"
       state: present
       publish_all_ports: yes
+      volumes: "/etc/sg-gatling-load/conf:/opt/gatling/conf, /etc/sg-gatling-load/results:/opt/gatling/results, /etc/sg-gatling-load/user-files:/opt/gatling/user-files"
     sudo: no
 
