@@ -21,8 +21,6 @@ class SGimulation extends Simulation {
     val writers = scenario("SG Writers").exec(Write.write)
     val consumers = scenario("SG Consumers").exec(Consume.consume)
 
-    setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
-
     setUp(
       writers.inject(rampUsers(100) over (100 seconds)),
       consumers.inject(rampUsers(1000) over (300 seconds))
