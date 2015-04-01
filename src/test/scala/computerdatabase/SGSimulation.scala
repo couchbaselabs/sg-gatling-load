@@ -33,7 +33,7 @@ object Write {
 
   val write = repeat(100, "n") {
     exec(http("Create New Doc")
-      .put("/doc${sessionId}${n}")
+      .put("/doc${session.sessionId}${n}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
       .pause(1)
