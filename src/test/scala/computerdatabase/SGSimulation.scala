@@ -32,8 +32,8 @@ object Write {
   val post_headers = Map("Content-Type" -> "application/json")
 
   val write = repeat(100, "n") {
-    exec(http("Create Doc ${n}")
-      .put("/doc${n}")
+    exec(http("Create Doc "+session.userId+"${n}")
+      .put("/doc"+session.userId+"${n}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
       .pause(1)
@@ -41,5 +41,5 @@ object Write {
 }
 
 object Consume {
-  val consume = exec(http("Write Doc").get("/"))
+  val consume = exec(http("Get Changes").get("/_changes"))
 }
