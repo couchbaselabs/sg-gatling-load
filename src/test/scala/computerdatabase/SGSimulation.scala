@@ -35,8 +35,8 @@ object Write {
     exec(http("Create Doc ${n}")
       .put("/doc${n}")
       .headers(post_headers)
-      .body(RawFileBody("create_doc_request.txt"))
-      .pause(1))
+      .body(RawFileBody("create_doc_request.txt")))
+      .pause(1)
   }
 }
 
