@@ -29,14 +29,11 @@ class SGimulation extends Simulation {
 
 object Write {
 
-  val session: Session = ???
-
-
   val post_headers = Map("Content-Type" -> "application/json")
 
   val write = repeat(100, "n") {
     exec(http("Create New Doc")
-      .put("/doc"+session("id").as[String]+"${n}")
+      .put("/doc${n}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
       .pause(1)
