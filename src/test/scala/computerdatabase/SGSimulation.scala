@@ -31,9 +31,14 @@ object Write {
 
   val post_headers = Map("Content-Type" -> "application/json")
 
+  val sessionid = exec({session => session("sessionId").as[String]) session})
+
+  val session: Session = ???
+  val attribute: SessionAttribute = session("sessionId")
+
   val write = repeat(100, "n") {
     exec(http("Create New Doc")
-      .put("/doc${session.sessionId}${n}")
+      .put("/doc${attribute}${n}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
       .pause(1)
