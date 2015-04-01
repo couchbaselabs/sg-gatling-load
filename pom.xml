@@ -40,6 +40,7 @@
 							<resultsFolder>target/gatling/results</resultsFolder>
 							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
 							<simulationsFolder>src/test/scala</simulationsFolder>
+							<simulationClass>computerdatabase.SGimulation</simulationClass>
 						</configuration>
 					</execution>
 				</executions>
