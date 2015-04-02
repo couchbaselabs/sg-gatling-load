@@ -31,19 +31,13 @@ class SGimulation extends Simulation {
 object Write {
 
   val post_headers = Map("Content-Type" -> "application/json")
-  val feeder = Iterator.continually(Map("userId" -> (Random.alphanumeric.take(5).mkString)))
-
-  
+  val feeder = Iterator.continually(Map("userId" -> (Random.alphanumeric.take(16).mkString)))
 
   val write = exec(feed(feeder)).repeat(100, "n") {
     exec(http("Create New Doc")
       .put("/doc${userId}${n}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
-      .exec { session =>
-  println(session("userId"))
-session
-}
   }
 }
 
