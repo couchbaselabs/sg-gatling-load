@@ -32,11 +32,10 @@ object Write {
 
   val post_headers = Map("Content-Type" -> "application/json")
 
-  val rnd = new scala.util.Random
-
+  exec(feed(feeder))
+  
   val write = repeat(100, "n") {
     exec(http("Create New Doc")
-      .feed(feeder)
       .put("/doc${userId}${n}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
