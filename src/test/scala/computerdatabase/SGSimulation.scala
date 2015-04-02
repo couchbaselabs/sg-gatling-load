@@ -32,10 +32,10 @@ object Write {
 
   val post_headers = Map("Content-Type" -> "application/json")
   val feeder = Iterator.continually(Map("userId" -> (Random.nextString(20))))
-  
-  exec(feed(feeder))
 
-  val write = repeat(100, "n") {
+  
+
+  val write = exec(feed(feeder)).repeat(100, "n") {
     exec(http("Create New Doc")
       .put("/doc${userId}${n}")
       .headers(post_headers)
