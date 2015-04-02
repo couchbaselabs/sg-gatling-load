@@ -31,9 +31,10 @@ object Write {
 
   val post_headers = Map("Content-Type" -> "application/json")
 
+  val session: Session = ???
   val sessionid = exec({session => session("sessionId").as[String]) session})
 
-  val session: Session = ???
+
   val attribute: SessionAttribute = session("sessionId")
 
   val write = repeat(100, "n") {
