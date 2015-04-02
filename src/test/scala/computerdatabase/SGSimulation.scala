@@ -35,15 +35,13 @@ object Write {
 
   val write = repeat(100, "n") {
     exec(http("Create New Doc")
-      .exec(session => {
-  // print the Session for debugging, don't do that on real Simulations
-  println(session)
-  session
-})
-      .put("/doc${userId}${n}")
+      .put("/doc${n}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
-      .pause(1)
+      .exec { session =>
+  println(session)
+session
+}
   }
 }
 
