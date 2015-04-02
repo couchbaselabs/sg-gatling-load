@@ -17,7 +17,7 @@ class SGimulation extends Simulation {
     .contentTypeHeader("application/json")
     .userAgentHeader("CouchbaseLite/1.0-Debug (iOS)")
 
-    val feeder = Iterator.continually(Map("userId" -> (Random.nextString(20))))
+    
 
     val writers = scenario("SG Writers").exec(Write.write)
     val consumers = scenario("SG Consumers").exec(Consume.consume)
@@ -31,9 +31,10 @@ class SGimulation extends Simulation {
 object Write {
 
   val post_headers = Map("Content-Type" -> "application/json")
-
-  exec(feed(feeder))
+  val feeder = Iterator.continually(Map("userId" -> (Random.nextString(20))))
   
+  exec(feed(feeder))
+
   val write = repeat(100, "n") {
     exec(http("Create New Doc")
       .put("/doc${userId}${n}")
