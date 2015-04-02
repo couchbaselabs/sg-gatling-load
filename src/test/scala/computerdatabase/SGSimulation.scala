@@ -31,11 +31,11 @@ object Write {
 
   val post_headers = Map("Content-Type" -> "application/json")
 
-  //val session: Session = ???
-  //val sessionid: String = _("sessionId").as[String] //exec({session => session("sessionId").as[String] session})
-
-
-  //val attribute: SessionAttribute = session("sessionId")
+  exec(session => {
+  // print the Session for debugging, don't do that on real Simulations
+  println(session)
+  session
+})
 
   val write = repeat(100, "n") {
     exec(http("Create New Doc")
