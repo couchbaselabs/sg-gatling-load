@@ -43,10 +43,6 @@
 							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
 							<simulationsFolder>src/test/scala</simulationsFolder>
 							<simulationClass>computerdatabase.SGimulation</simulationClass>
-							<jvmArgs>
-                                <jvmArg>-Dusers=${scenario.numberOfUsers}</jvmArg>
-                                <jvmArg>-Dramp=${scenario.rampUpPeriod}</jvmArg>
-                            </jvmArgs>
 						</configuration>
 					</execution>
 				</executions>
