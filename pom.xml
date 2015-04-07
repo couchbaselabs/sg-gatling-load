@@ -10,6 +10,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gatling.version>${project.version}</gatling.version>
     	<gatling-plugin.version>2.0.0</gatling-plugin.version>
+    	<scenario.numberOfUsers>10</scenario.numberOfUsers>
+        <scenario.rumpUpPeriod>60</scenario.rumpUpPeriod>
 	</properties>
 
 	<dependencies>
@@ -41,6 +43,10 @@
 							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
 							<simulationsFolder>src/test/scala</simulationsFolder>
 							<simulationClass>computerdatabase.SGimulation</simulationClass>
+							<jvmArgs>
+                                <jvmArg>-Dusers=${scenario.numberOfUsers}</jvmArg>
+                                <jvmArg>-Dramp=${rumpUpPeriod}</jvmArg>
+                            </jvmArgs>
 						</configuration>
 					</execution>
 				</executions>

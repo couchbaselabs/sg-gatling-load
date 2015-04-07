@@ -22,9 +22,12 @@ class SGimulation extends Simulation {
     val writers = scenario("SG Writers").exec(Write.write)
     val consumers = scenario("SG Consumers").exec(Consume.consume)
 
+    val rampUsers = Integer.getInteger("users", 1)
+    val rampUpTime  = java.lang.Long.getLong("ramp", 0L)
+
     setUp(
-      writers.inject(rampUsers(10) over (100 seconds)),
-      consumers.inject(rampUsers(10) over (100 seconds))
+      writers.inject(rampUsers(rampUsers) over (rampUpTime seconds)),
+      consumers.inject(rampUsers(rampUsers) over (rampUpTime seconds))
     ).protocols(httpConf)
 }
 
