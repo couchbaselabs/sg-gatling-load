@@ -11,7 +11,7 @@
 		<gatling.version>${project.version}</gatling.version>
     	<gatling-plugin.version>2.0.0</gatling-plugin.version>
     	<scenario.numberOfUsers>10</scenario.numberOfUsers>
-        <scenario.rumpUpPeriod>60</scenario.rumpUpPeriod>
+        <scenario.rampUpPeriod>100</scenario.rampUpPeriod>
 	</properties>
 
 	<dependencies>
@@ -45,7 +45,7 @@
 							<simulationClass>computerdatabase.SGimulation</simulationClass>
 							<jvmArgs>
                                 <jvmArg>-Dusers=${scenario.numberOfUsers}</jvmArg>
-                                <jvmArg>-Dramp=${rumpUpPeriod}</jvmArg>
+                                <jvmArg>-Dramp=${scenario.rampUpPeriod}</jvmArg>
                             </jvmArgs>
 						</configuration>
 					</execution>
