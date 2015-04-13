@@ -10,8 +10,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gatling.version>${project.version}</gatling.version>
     	<gatling-plugin.version>2.0.0</gatling-plugin.version>
-    	<scenario.numberOfUsers>10</scenario.numberOfUsers>
-        <scenario.rampUpPeriod>100</scenario.rampUpPeriod>
 	</properties>
 
 	<dependencies>
@@ -38,11 +36,11 @@
 						<configuration>
 							<!-- Default values -->
 							<!--<configFolder>src/test/resources</configFolder-->
-							<dataFolder>src/test/resources/data</dataFolder>
-							<resultsFolder>target/gatling/results</resultsFolder>
-							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
-							<simulationsFolder>src/test/scala</simulationsFolder>
-							<simulationClass>computerdatabase.SGimulation</simulationClass>
+							<dataFolder>${env.dataFolder}</dataFolder>
+							<resultsFolder>${env.resultsFolder}</resultsFolder>
+							<requestBodiesFolder>${env.requestBodiesFolder}</requestBodiesFolder>
+							<simulationsFolder>${env.simulationsFolder}</simulationsFolder>
+							<simulationClass>${env.simulationClass}</simulationClass>
 						</configuration>
 					</execution>
 				</executions>
