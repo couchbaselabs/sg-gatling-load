@@ -55,11 +55,13 @@
 			<activation>
             	<activeByDefault>true</activeByDefault>
         	</activation>
-			<simulation.dataFolder>src/test/resources/data</simulation.dataFolder>
-    		<simulation.resultsFolder>target/gatling/results</simulation.resultsFolder>
-    		<simulation.requestBodiesFolder>src/test/resources/request-bodies</simulation.requestBodiesFolder>
-    		<simulation.simulationsFolder>src/test/scala</simulation.simulationsFolder>
-    		<simulation.simulationClass>computerdatabase.SGimulation</simulation.simulationClass>
+        	<properties>
+				<simulation.dataFolder>src/test/resources/data</simulation.dataFolder>
+    			<simulation.resultsFolder>target/gatling/results</simulation.resultsFolder>
+    			<simulation.requestBodiesFolder>src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.simulationsFolder>src/test/scala</simulation.simulationsFolder>
+    			<simulation.simulationClass>computerdatabase.SGimulation</simulation.simulationClass>
+    		</properties>
 		</profile>
 		<profile>
 			<id>slow-memory-leak</id>
