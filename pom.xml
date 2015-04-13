@@ -9,7 +9,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gatling.version>${project.version}</gatling.version>
-    	<gatling-plugin.version>2.0.0</gatling-plugin.version>
+    	<gatling-plugin.version>2.1.2</gatling-plugin.version>
 
     	<simulation.dataFolder>src/test/resources/data</simulation.dataFolder>
     	<simulation.resultsFolder>target/gatling/results</simulation.resultsFolder>
