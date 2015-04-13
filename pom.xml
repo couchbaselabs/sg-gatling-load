@@ -10,6 +10,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gatling.version>${project.version}</gatling.version>
     	<gatling-plugin.version>2.0.0</gatling-plugin.version>
+
+    	<simulation.dataFolder>src/test/resources/data</simulation.dataFolder>
+    	<simulation.resultsFolder>target/gatling/results</simulation.resultsFolder>
+    	<simulation.requestBodiesFolder>src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    	<simulation.simulationsFolder>src/test/scala</simulation.simulationsFolder>
+    	<simulation.simulationClass>computerdatabase.SGimulation</simulation.simulationClass>
 	</properties>
 
 	<dependencies>
@@ -20,6 +26,19 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>slow-memory-leak</id>
+			<properties>
+				<simulation.dataFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/src/test/resources/data</simulation.dataFolder>
+    			<simulation.resultsFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/target/gatling/results</simulation.resultsFolder>
+    			<simulation.requestBodiesFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.simulationsFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/src/test/scala</simulation.simulationsFolder>
+    			<simulation.simulationClass>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/computerdatabase.SGimulation</simulation.simulationClass>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
@@ -36,11 +55,11 @@
 						<configuration>
 							<!-- Default values -->
 							<!--<configFolder>src/test/resources</configFolder-->
-							<dataFolder>${env.dataFolder}</dataFolder>
-							<resultsFolder>${env.resultsFolder}</resultsFolder>
-							<requestBodiesFolder>${env.requestBodiesFolder}</requestBodiesFolder>
-							<simulationsFolder>${env.simulationsFolder}</simulationsFolder>
-							<simulationClass>${env.simulationClass}</simulationClass>
+							<dataFolder>${simulation.dataFolder}</dataFolder>
+							<resultsFolder>${simulation.resultsFolder}</resultsFolder>
+							<requestBodiesFolder>${simulation.requestBodiesFolder}</requestBodiesFolder>
+							<simulationsFolder>simulation.simulationsFolder</simulationsFolder>
+							<simulationClass>simulation.simulationClass</simulationClass>
 						</configuration>
 					</execution>
 				</executions>
