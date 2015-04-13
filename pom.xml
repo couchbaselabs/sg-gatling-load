@@ -58,8 +58,8 @@
 							<dataFolder>${simulation.dataFolder}</dataFolder>
 							<resultsFolder>${simulation.resultsFolder}</resultsFolder>
 							<requestBodiesFolder>${simulation.requestBodiesFolder}</requestBodiesFolder>
-							<simulationsFolder>simulation.simulationsFolder</simulationsFolder>
-							<simulationClass>simulation.simulationClass</simulationClass>
+							<simulationsFolder>${simulation.simulationsFolder}</simulationsFolder>
+							<simulationClass>${simulation.simulationClass}</simulationClass>
 						</configuration>
 					</execution>
 				</executions>
