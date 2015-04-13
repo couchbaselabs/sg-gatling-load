@@ -64,12 +64,12 @@
     		</properties>
 		</profile>
 		<profile>
-			<id>gatling-sim</id>
+			<id>gateload-sim</id>
 			<properties>
-				<simulation.dataFolder>themes/gatling-sim/src/test/resources/data</simulation.dataFolder>
-    			<simulation.resultsFolder>themes/gatling-sim/target/gatling/results</simulation.resultsFolder>
-    			<simulation.requestBodiesFolder>themes/gatling-sim/src/test/resources/request-bodies</simulation.requestBodiesFolder>
-    			<simulation.simulationsFolder>themes/gatling-sim/src/test/scala</simulation.simulationsFolder>
+				<simulation.dataFolder>themes/gateload-sim/src/test/resources/data</simulation.dataFolder>
+    			<simulation.resultsFolder>themes/gateload-sim/target/gatling/results</simulation.resultsFolder>
+    			<simulation.requestBodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>BasicSimulation</simulation.simulationClass>
 			</properties>
 		</profile>
