@@ -55,21 +55,6 @@
 	</build>
 
 
-	<profiles>
-		<profile>
-			<id>slow-memory-leak</id>
-			<properties>
-				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-				<gatling.version>${project.version}</gatling.version>
-    			<gatling-plugin.version>2.0.0</gatling-plugin.version>
-				<simulation.dataFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/src/test/resources/data</simulation.dataFolder>
-    			<simulation.resultsFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/target/gatling/results</simulation.resultsFolder>
-    			<simulation.requestBodiesFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/src/test/resources/request-bodies</simulation.requestBodiesFolder>
-    			<simulation.simulationsFolder>themes/slow-memory-leak/com.couchbase.sg-gatling-load.theme.slow-memory-leak/src/test/scala</simulation.simulationsFolder>
-    			<simulation.simulationClass>BasicSimulation</simulation.simulationClass>
-			</properties>
-		</profile>
-	</profiles>
 
 
 </project>
