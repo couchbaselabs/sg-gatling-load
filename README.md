@@ -61,3 +61,27 @@ $ ansible-playbook --ask-pass --ask-sudo-pass gateloadclients.yml
 ```
 
 ## Generate Report
+
+## Adding a new theme
+
+Change directory to
+
+```
+themes
+```
+Create a new theme using maven architypes
+
+```
+mvn archetype:generate
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 582: gatling
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): : 1
+Choose io.gatling.highcharts:gatling-highcharts-maven-archetype version: 10
+Define value for property 'groupId': : com.couchbase.sg
+Define value for property 'artifactId': : <THEME_NAME>
+Define value for property 'version':  1.0-SNAPSHOT: : 1.0-SNAPSHOT
+Define value for property 'package':  com.couchbase.sg: : com.couchbase.sg
+Y: : y
+```
+
+
+
