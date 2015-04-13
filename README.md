@@ -29,6 +29,11 @@ The ansible playbook steps are as follows:
   
   Clone this repo onto the management host using the collowing command:
   
+  Install JDK and Maven roles
+
+  ansible-galaxy install geerlingguy.java
+  ansible-galaxy install https://github.com/silpion/ansible-maven.git
+  
   ```
   git clone https://github.com/couchbaselabs/sg-gatling-load.git
   ```
