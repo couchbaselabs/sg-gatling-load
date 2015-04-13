@@ -64,6 +64,16 @@
     		</properties>
 		</profile>
 		<profile>
+			<id>gatling-sim</id>
+			<properties>
+				<simulation.dataFolder>themes/gatling-sim/src/test/resources/data</simulation.dataFolder>
+    			<simulation.resultsFolder>themes/gatling-sim/target/gatling/results</simulation.resultsFolder>
+    			<simulation.requestBodiesFolder>themes/gatling-sim/src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.simulationsFolder>themes/gatling-sim/src/test/scala</simulation.simulationsFolder>
+    			<simulation.simulationClass>BasicSimulation</simulation.simulationClass>
+			</properties>
+		</profile>
+		<profile>
 			<id>slow-memory-leak</id>
 			<properties>
 				<simulation.dataFolder>themes/slow-memory-leak/src/test/resources/data</simulation.dataFolder>
