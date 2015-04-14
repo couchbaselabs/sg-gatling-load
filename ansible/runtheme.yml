@@ -41,8 +41,5 @@
     shell: 'grep "Please open the following file:" /home/projects/sg-gatling-load/somelog.txt | sed "s/Please open the following file: //" | sed "s/index.html//"'
     register: results_dir
 
-  - name: echo directory path
-    debug: var={{ results_dir.stdout }}/simulation.log
-
   - name: Pull simulation.log for run
     fetch: src={{ results_dir.stdout }}/simulation.log dest=/tmp/sg-gatling-load/ fail-on-missing=yes
