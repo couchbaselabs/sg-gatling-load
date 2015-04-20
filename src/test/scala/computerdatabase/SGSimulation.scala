@@ -8,7 +8,7 @@ import scala.util.Random
 class SGimulation extends Simulation {
 
   val httpConf = http
-    .baseURL("http://localhost:4985/db") // Here is the root for all relative URLs
+    .baseURL(java.lang.System.getProperty("baseURL","http://localhost:4985/db")) // Here is the root for all relative URLs
     .inferHtmlResources()
     .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
