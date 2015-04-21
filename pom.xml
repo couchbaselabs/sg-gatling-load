@@ -65,13 +65,23 @@
     		</properties>
 		</profile>
 		<profile>
+			<id>gateload-users</id>
+			<properties>
+				<simulation.dataFolder>themes/gateload-sim/src/test/resources/data</simulation.dataFolder>
+    			<simulation.resultsFolder>themes/gateload-sim/target/gatling/results</simulation.resultsFolder>
+    			<simulation.requestBodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
+    			<simulation.simulationClass>CreateUserAccountsSimulation</simulation.simulationClass>
+			</properties>
+		</profile>
+		<profile>
 			<id>gateload-sim</id>
 			<properties>
 				<simulation.dataFolder>themes/gateload-sim/src/test/resources/data</simulation.dataFolder>
     			<simulation.resultsFolder>themes/gateload-sim/target/gatling/results</simulation.resultsFolder>
     			<simulation.requestBodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.requestBodiesFolder>
     			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
-    			<simulation.simulationClass>BasicSimulation</simulation.simulationClass>
+    			<simulation.simulationClass>WritersConsumersSimulation</simulation.simulationClass>
 			</properties>
 		</profile>
 		<profile>
