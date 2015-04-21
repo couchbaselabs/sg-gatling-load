@@ -7,6 +7,7 @@ class WritersConsumersSimulation extends Simulation {
 
   val httpConf = http
     .baseURL(java.lang.System.getProperty("baseURL","http://localhost:4985/db")) // Here is the root for all relative URLs
+    .wsBaseURL(java.lang.System.getProperty("baseURL","http://localhost:4985/db"))
     .inferHtmlResources()
     .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
@@ -31,17 +32,21 @@ class WritersConsumersSimulation extends Simulation {
 
 object Write {
 
+  val hostname = java.net.InetAddress.getLocalHost().getHostName()
+  val timestamp = java.lang.System.currentTimeMillis()
+
   val post_headers = Map("Content-Type" -> "application/json")
   val feeder = Iterator.continually(Map("userId" -> (Random.alphanumeric.take(16).mkString)))
 
-  val write = exec(feed(feeder)).repeat(100, "n") {
+  val write = exec(feed(feeder)).repeat(10000, "n") {
     exec(http("Create New Doc")
-      .put("/doc${userId}${n}")
+      .put("/doc${userId}-${timestamp}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
   }
 }
 
 object Consume {
-  val consume = exec(http("Get Changes").get("/_changes"))
+  val consume = exec(ws("Get continuous changes").open("/_changes?feed=websockets"))
+  val check = exec(ws("Check Incoming Changes").check(wsAwait.until(10000).regex([A-Z]?-(.*)")))
 }
