@@ -33,7 +33,7 @@ object Create {
 
   val hostname = java.net.InetAddress.getLocalHost().getHostName();
 
-  val write = repeat(rampUserCount, "n") {
+  val write = {
     exec(http("Create New User")
       .put("/users/${hostname}${n}")
       .headers(post_headers)

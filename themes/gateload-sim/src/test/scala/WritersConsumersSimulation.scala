@@ -33,20 +33,23 @@ class WritersConsumersSimulation extends Simulation {
 object Write {
 
   val hostname = java.net.InetAddress.getLocalHost().getHostName()
-  val timestamp = java.lang.System.currentTimeMillis()
+  
 
   val post_headers = Map("Content-Type" -> "application/json")
   val feeder = Iterator.continually(Map("userId" -> (Random.alphanumeric.take(16).mkString)))
 
   val write = exec(feed(feeder)).repeat(10000, "n") {
+    val timestamp = java.lang.System.currentTimeMillis()
+
     exec(http("Create New Doc")
       .put("/doc${userId}-${timestamp}")
       .headers(post_headers)
       .body(RawFileBody("create_doc_request.txt")))
+      .pause(1)
   }
 }
 
 object Consume {
   val consume = exec(ws("Get continuous changes").open("/_changes?feed=websockets"))
-  val check = exec(ws("Check Incoming Changes").check(wsAwait.until(10000).regex("[A-Z]?-(.*)")))
+  val check = exec(ws("Check Incoming Changes").check(wsAwait.within(6000).until(10000).regex("[A-Z]?-(.*)")))
 }
