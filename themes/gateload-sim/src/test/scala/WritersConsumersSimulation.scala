@@ -48,5 +48,5 @@ object Write {
 
 object Consume {
   val consume = exec(ws("Get continuous changes").open("/_changes?feed=websockets"))
-  val check = exec(ws("Check Incoming Changes").check(wsAwait.until(10000).regex([A-Z]?-(.*)")))
+  val check = exec(ws("Check Incoming Changes").check(wsAwait.until(10000).regex("[A-Z]?-(.*)")))
 }
