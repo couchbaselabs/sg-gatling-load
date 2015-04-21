@@ -19,8 +19,8 @@ class CreateUserAccountsSimulation extends Simulation {
 
     val writers = scenario("Create Users").exec(Create.write)
 
-    val userCount = Integer.getInteger("users", 1)
-    //val rampUpTime  = java.lang.Long.getLong("ramp", 0L)
+    val rampUserCount = Integer.getInteger("users", 1)
+    val rampUpTime  = java.lang.Long.getLong("ramp", 0L)
 
     setUp(
       writers.inject(rampUsers(rampUserCount) over (rampUpTime seconds))
@@ -33,7 +33,7 @@ object Create {
 
   val hostname = java.net.InetAddress.getLocalHost().getHostName();
 
-  val write = repeat(userCount, "n") {
+  val write = repeat(rampUserCount, "n") {
     exec(http("Create New User")
       .put("/users/${hostname}${n}")
       .headers(post_headers)
