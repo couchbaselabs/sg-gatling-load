@@ -15,8 +15,6 @@ class CreateUserAccountsSimulation extends Simulation {
     .contentTypeHeader("application/json")
     .userAgentHeader("CouchbaseLite/1.0-Debug (iOS)")
 
-    
-
     val writers = scenario("Create Users").exec(Create.write)
 
     val rampUserCount = Integer.getInteger("users", 1)
@@ -33,10 +31,18 @@ object Create {
 
   val hostname = java.net.InetAddress.getLocalHost().getHostName();
 
-  val write = {
-    exec(http("Create New User")
-      .put("/_user/${hostname}${n}")
-      .headers(post_headers)
-      .body(RawFileBody("create_user_request.txt")))
-  }
+  // first, let's build a Feeder that set an numeric id:
+  val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
+
+  feed(userIdFeeder).exec { session =>
+      //val userId = session("userId").as[Int]
+      //val id = iterations * userIdFeeder
+      session.set("hostname", hostname)
+
+    }
+
+  val write = exec(http("Create New User")
+    .put("/_user/${hostname}-${userId}")
+    .headers(post_headers)
+    .body(RawFileBody("create_user_request.txt")))
 }
