@@ -43,10 +43,7 @@
 							<simulationsFolder>${simulation.simulationsFolder}</simulationsFolder>
 							<simulationClass>${simulation.simulationClass}</simulationClass>
 							<noReports>true</noReports>
-                            <jvmArgs>
-                                <arg>-DtargetHost=${simulation.targetHost}</arg>
-                            </jvmArgs>
-
+                            <jvmArgs>${simulation.jvmArgs}</jvmArgs>
 						</configuration>
 					</execution>
 				</executions>
@@ -67,6 +64,9 @@
     			<simulation.bodiesFolder>src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>computerdatabase.SGimulation</simulation.simulationClass>
+    			<simulation.jvmArgs>
+                	<arg>-DtargetHost=${simulation.targetHost}</arg>
+                </simulation.jvmArgs>
     		</properties>
 		</profile>
 		<profile>
@@ -77,6 +77,9 @@
     			<simulation.bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>CreateUserAccountsSimulation</simulation.simulationClass>
+    			<simulation.jvmArgs>
+                	<arg>-DtargetHost=${simulation.targetHost}</arg>
+                </simulation.jvmArgs>
 			</properties>
 		</profile>
 		<profile>
@@ -87,6 +90,9 @@
     			<simulation.bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>WritersConsumersSimulation</simulation.simulationClass>
+    			<simulation.jvmArgs>
+                	<arg>-DtargetHost=${simulation.targetHost}</arg>
+                </simulation.jvmArgs>
 			</properties>
 		</profile>
 		<profile>
@@ -97,6 +103,9 @@
     			<simulation.bodiesFolder>themes/slow-memory-leak/src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>themes/slow-memory-leak/src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>BasicSimulation</simulation.simulationClass>
+    			<simulation.jvmArgs>
+                	<arg>-DtargetHost=${simulation.targetHost}</arg>
+                </simulation.jvmArgs>
 			</properties>
 		</profile>
 	</profiles>

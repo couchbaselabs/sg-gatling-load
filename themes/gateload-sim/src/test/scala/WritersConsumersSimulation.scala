@@ -6,8 +6,8 @@ import scala.util.Random
 class WritersConsumersSimulation extends Simulation {
 
   val httpConf = http
-    .baseURL(java.lang.System.getProperty("baseURL","http://localhost:4985/db")) // Here is the root for all relative URLs
-    .wsBaseURL(java.lang.System.getProperty("baseURL","http://localhost:4985/db"))
+    .baseURL("http://"+java.lang.System.getProperty("targetHost","localhost")+":4984/db")  // Here is the root for all relative URLs
+    .wsBaseURL("http://"+java.lang.System.getProperty("targetHost","localhost")+":4984/db")
     .inferHtmlResources()
     .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
