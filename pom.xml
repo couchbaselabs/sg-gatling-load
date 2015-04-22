@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gatling.version>${project.version}</gatling.version>
     	<gatling-plugin.version>2.1.2</gatling-plugin.version>
-    	<simulation.baseURL>http://localhost:4985/db</simulation.baseURL>
+    	<simulation.targetHost>localhost</simulation.targetHost>
 	</properties>
 
 	<dependencies>
@@ -42,6 +42,8 @@
 							<requestBodiesFolder>${simulation.requestBodiesFolder}</requestBodiesFolder>
 							<simulationsFolder>${simulation.simulationsFolder}</simulationsFolder>
 							<simulationClass>${simulation.simulationClass}</simulationClass>
+							<noReports>true</noReports>
+							<gatlingJvmArgs>-DtargetHost=${simulation.targetHost}</gatlingJvmArgs>
 						</configuration>
 					</execution>
 				</executions>

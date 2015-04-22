@@ -6,7 +6,7 @@ import scala.util.Random
 class CreateUserAccountsSimulation extends Simulation {
 
   val httpConf = http
-    .baseURL(java.lang.System.getProperty("baseURL","http://localhost:4985/db")) // Here is the root for all relative URLs
+    .baseURL("http://"+java.lang.System.getProperty("targetHost","localhost")+":4985/db") // Here is the root for all relative URLs
     .inferHtmlResources()
     .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
