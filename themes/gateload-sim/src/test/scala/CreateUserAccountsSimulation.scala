@@ -40,7 +40,7 @@ object Create {
       session.set("hostname", hostname)
 
   ).exec(http("Create New User")
-    .put("/_user/user-${hostname}-id")
+    .put("/_user/user-${hostname}-${userId}")
     .headers(post_headers)
     .body(RawFileBody("create_user_request.txt")))
 }
