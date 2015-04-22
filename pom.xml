@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.gatling</groupId>
-	<artifactId>gatling-maven-plugin-demo</artifactId>
+	<artifactId>sg-gatling-load</artifactId>
 	<version>2.1.2</version>
 
 	<properties>

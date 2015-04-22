@@ -39,5 +39,5 @@ object Create {
   ).exec(http("Create New User")
     .put("/_user/user-${hostname}-${userId}")
     .headers(post_headers)
-    .body(RawFileBody("create_user_request.txt")))
+    .body(StringBody("""{ "password": "password" }""")).asJSON)
 }
