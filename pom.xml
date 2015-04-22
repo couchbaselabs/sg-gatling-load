@@ -22,91 +22,137 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>io.gatling</groupId>
-				<artifactId>gatling-maven-plugin</artifactId>
-				<version>${gatling-plugin.version}</version>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<!-- Default values -->
-							<!--<configFolder>src/test/resources</configFolder-->
-							<dataFolder>${simulation.dataFolder}</dataFolder>
-							<resultsFolder>${simulation.resultsFolder}</resultsFolder>
-							<bodiesFolder>${simulation.bodiesFolder}</bodiesFolder>
-							<simulationsFolder>${simulation.simulationsFolder}</simulationsFolder>
-							<simulationClass>${simulation.simulationClass}</simulationClass>
-							<noReports>true</noReports>
-                            <jvmArgs>${simulation.jvmArgs}</jvmArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
-
 	<profiles>
 		<profile>
 			<id>default</id>
 			<activation>
             	<activeByDefault>true</activeByDefault>
         	</activation>
-        	<properties>
-				<simulation.dataFolder>src/test/resources/data</simulation.dataFolder>
-    			<simulation.resultsFolder>target/gatling/results</simulation.resultsFolder>
-    			<simulation.bodiesFolder>src/test/resources/request-bodies</simulation.bodiesFolder>
-    			<simulation.simulationsFolder>src/test/scala</simulation.simulationsFolder>
-    			<simulation.simulationClass>computerdatabase.SGimulation</simulation.simulationClass>
-    			<simulation.jvmArgs>
-                	<arg>-DtargetHost=${simulation.targetHost}</arg>
-                </simulation.jvmArgs>
-    		</properties>
+    		<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<!--<configFolder>src/test/resources</configFolder-->
+									<dataFolder>src/test/resources/data</dataFolder>
+									<resultsFolder>target/gatling/results</resultsFolder>
+									<bodiesFolder>src/test/resources/request-bodies</bodiesFolder>
+									<simulationsFolder>src/test/scala</simulationsFolder>
+									<simulationClass>computerdatabase.SGimulation</simulationClass>
+									<noReports>true</noReports>
+                            		<jvmArgs>
+                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            		</jvmArgs>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>gateload-users</id>
-			<properties>
-				<simulation.dataFolder>themes/gateload-sim/src/test/resources/data</simulation.dataFolder>
-    			<simulation.resultsFolder>themes/gateload-sim/target/gatling/results</simulation.resultsFolder>
-    			<simulation.bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.bodiesFolder>
-    			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
-    			<simulation.simulationClass>CreateUserAccountsSimulation</simulation.simulationClass>
-    			<simulation.jvmArgs>
-                	<arg>-DtargetHost=${simulation.targetHost}</arg>
-                </simulation.jvmArgs>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<!--<configFolder>src/test/resources</configFolder-->
+									<dataFolder>themes/gateload-sim/src/test/resources/data</dataFolder>
+									<resultsFolder>themes/gateload-sim/target/gatling/results</resultsFolder>
+									<bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</bodiesFolder>
+									<simulationsFolder>themes/gateload-sim/src/test/scala</simulationsFolder>
+									<simulationClass>CreateUserAccountsSimulation</simulationClass>
+									<noReports>true</noReports>
+                            		<jvmArgs>
+                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            		</jvmArgs>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>gateload-sim</id>
-			<properties>
-				<simulation.dataFolder>themes/gateload-sim/src/test/resources/data</simulation.dataFolder>
-    			<simulation.resultsFolder>themes/gateload-sim/target/gatling/results</simulation.resultsFolder>
-    			<simulation.bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.bodiesFolder>
-    			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
-    			<simulation.simulationClass>WritersConsumersSimulation</simulation.simulationClass>
-    			<simulation.jvmArgs>
-                	<arg>-DtargetHost=${simulation.targetHost}</arg>
-                </simulation.jvmArgs>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<!--<configFolder>src/test/resources</configFolder-->
+									<dataFolder>themes/gateload-sim/src/test/resources/data</dataFolder>
+									<resultsFolder>themes/gateload-sim/target/gatling/results</resultsFolder>
+									<bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</bodiesFolder>
+									<simulationsFolder>themes/gateload-sim/src/test/scala</simulationsFolder>
+									<simulationClass>WritersConsumersSimulation</simulationClass>
+									<noReports>true</noReports>
+                            		<jvmArgs>
+                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            		</jvmArgs>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>slow-memory-leak</id>
-			<properties>
-				<simulation.dataFolder>themes/slow-memory-leak/src/test/resources/data</simulation.dataFolder>
-    			<simulation.resultsFolder>themes/slow-memory-leak/target/gatling/results</simulation.resultsFolder>
-    			<simulation.bodiesFolder>themes/slow-memory-leak/src/test/resources/request-bodies</simulation.bodiesFolder>
-    			<simulation.simulationsFolder>themes/slow-memory-leak/src/test/scala</simulation.simulationsFolder>
-    			<simulation.simulationClass>BasicSimulation</simulation.simulationClass>
-    			<simulation.jvmArgs>
-                	<arg>-DtargetHost=${simulation.targetHost}</arg>
-                </simulation.jvmArgs>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<!--<configFolder>src/test/resources</configFolder-->
+									<dataFolder>themes/slow-memory-leak/src/test/resources/data</dataFolder>
+									<resultsFolder>themes/slow-memory-leak/target/gatling/results</resultsFolder>
+									<bodiesFolder>themes/slow-memory-leak/src/test/resources/request-bodies</bodiesFolder>
+									<simulationsFolder>themes/slow-memory-leak/src/test/scala</simulationsFolder>
+									<simulationClass>SlowMemoryLeakSimulation</simulationClass>
+									<noReports>true</noReports>
+                            		<jvmArgs>
+                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            		</jvmArgs>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>
