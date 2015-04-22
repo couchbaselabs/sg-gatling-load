@@ -43,7 +43,10 @@
 							<simulationsFolder>${simulation.simulationsFolder}</simulationsFolder>
 							<simulationClass>${simulation.simulationClass}</simulationClass>
 							<noReports>true</noReports>
-							<gatlingJvmArgs>-DtargetHost=${simulation.targetHost}</gatlingJvmArgs>
+                            <jvmArgs>
+                                <arg>-DtargetHost=${simulation.targetHost}</arg>
+                            </jvmArgs>
+
 						</configuration>
 					</execution>
 				</executions>
