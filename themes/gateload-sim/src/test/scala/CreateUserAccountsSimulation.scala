@@ -5,8 +5,22 @@ import scala.util.Random
 
 class CreateUserAccountsSimulation extends Simulation {
 
+  val targetHost=java.lang.System.getProperty("targetHost","localhost")
+  val database=java.lang.System.getProperty("db","sync_gateway")
+  val docSize=scala.Int.unbox(java.lang.Integer.getInteger("docSize",1024))
+  val rampUpIntervalMs=scala.Int.unbox(java.lang.Integer.getInteger("rampUpIntervalMs",3600000))
+  val runTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("rampUpIntervalMs",7200000))
+  val sleepTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("sleepTimeMs",10000))
+  val numPullers=scala.Int.unbox(java.lang.Integer.getInteger("numPullers",700))
+  val numPushers=scala.Int.unbox(java.lang.Integer.getInteger("numPushers",300))
+  val feedType=java.lang.System.getProperty("feedType","continuous")
+  val channelActiveUsers=scala.Int.unbox(java.lang.Integer.getInteger("channelActiveUsers",40))
+  val channelConcurrentUsers=java.lang.Integer.getInteger("channelConcurrentUsers",8)
+  val minUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",10000))
+  val maxUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",60000))
+
   val httpConf = http
-    .baseURL("http://"+java.lang.System.getProperty("targetHost","localhost")+":4985/db") // Here is the root for all relative URLs
+    .baseURL("http://"+targetHost+":4985/"+database) // Here is the root for all relative URLs
     .inferHtmlResources()
     .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
@@ -17,11 +31,8 @@ class CreateUserAccountsSimulation extends Simulation {
 
     val writers = scenario("Create Users").exec(Create.write)
 
-    val rampUserCount = Integer.getInteger("users", 1)
-    val rampUpTime  = java.lang.Long.getLong("ramp", 0L)
-
     setUp(
-      writers.inject(rampUsers(rampUserCount) over (rampUpTime seconds))
+      writers.inject(rampUsers(numPullers + numPushers) over (rampUpIntervalMs milliseconds))
     ).protocols(httpConf)
 }
 
@@ -34,10 +45,12 @@ object Create {
   // first, let's build a Feeder that set an numeric id:
   val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
-  val write = feed(userIdFeeder).exec ( session =>
-      session.set("hostname", hostname)
-  ).exec(http("Create New User")
-    .put("/_user/user-${hostname}-${userId}")
+  val userChannel = "channel-"+hostname
+
+  val write = feed(userIdFeeder).exec( session => session.set("hostname", hostname))
+    .exec( session => session.set("userChannel", userChannel))
+    .exec(http("Create New User")
+    .put("/_user/user2-${hostname}-${userId}")
     .headers(post_headers)
-    .body(RawFileBody("create_user_request.txt")).asJSON)
+    .body(ELFileBody("create_user_request.txt")).asJSON)
 }
