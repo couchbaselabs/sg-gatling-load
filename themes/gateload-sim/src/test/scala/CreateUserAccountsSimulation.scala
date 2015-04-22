@@ -6,7 +6,7 @@ import scala.util.Random
 class CreateUserAccountsSimulation extends Simulation {
 
   val targetHost=java.lang.System.getProperty("targetHost","localhost")
-  val database=java.lang.System.getProperty("db","sync_gateway")
+  val database=java.lang.System.getProperty("database","sync_gateway")
   val docSize=scala.Int.unbox(java.lang.Integer.getInteger("docSize",1024))
   val rampUpIntervalMs=scala.Int.unbox(java.lang.Integer.getInteger("rampUpIntervalMs",3600000))
   val runTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("rampUpIntervalMs",7200000))
