@@ -50,6 +50,9 @@
 									<noReports>true</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHost=${simulation.targetHost}</arg>
+										<arg>-Ddatabase=db</arg>arg>
+										<arg>-Dusers=20</arg>
+										<arg>-Dramp=100</arg>
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -82,6 +85,18 @@
 									<noReports>true</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHost=${simulation.targetHost}</arg>
+										<arg>-Ddatabase=db</arg>arg>
+										<arg>-DdocSize=1024</arg>
+										<arg>-DrampUpIntervalMs=3600000</arg>
+										<arg>-DrunTimeMs=7200000</arg>
+										<arg>-DsleepTimeMs=10000</arg>
+										<arg>-DnumPullers=700</arg>
+										<arg>-DnumPushers=300</arg>
+										<arg>-DfeedType=continuous</arg>
+										<arg>-DchannelActiveUsers=40</arg>
+										<arg>-DchannelConcurrentUsers=8</arg>
+										<arg>-DminUserOffTimeMs=10000</arg>
+										<arg>-DmaxUserOffTimeMs=60000</arg>
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -114,6 +129,18 @@
 									<noReports>true</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHost=${simulation.targetHost}</arg>
+										<arg>-Ddatabase=db</arg>arg>
+										<arg>-DdocSize=1024</arg>
+										<arg>-DrampUpIntervalMs=3600000</arg>
+										<arg>-DrunTimeMs=7200000</arg>
+										<arg>-DsleepTimeMs=10000</arg>
+										<arg>-DnumPullers=700</arg>
+										<arg>-DnumPushers=300</arg>
+										<arg>-DfeedType=continuous</arg>
+										<arg>-DchannelActiveUsers=40</arg>
+										<arg>-DchannelConcurrentUsers=8</arg>
+										<arg>-DminUserOffTimeMs=10000</arg>
+										<arg>-DmaxUserOffTimeMs=60000</arg>
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -146,6 +173,9 @@
 									<noReports>true</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHost=${simulation.targetHost}</arg>
+										<arg>-Ddatabase=db</arg>arg>
+										<arg>-Dusers=20</arg>
+										<arg>-Dramp=100</arg>
                             		</jvmArgs>
 								</configuration>
 							</execution>
