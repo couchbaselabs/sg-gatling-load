@@ -35,10 +35,7 @@ object Create {
   val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
   val write = feed(userIdFeeder).exec ( session =>
-      //val userId = session("userId").as[Int]
-      //val id = iterations * userIdFeeder
       session.set("hostname", hostname)
-
   ).exec(http("Create New User")
     .put("/_user/user-${hostname}-${userId}")
     .headers(post_headers)
