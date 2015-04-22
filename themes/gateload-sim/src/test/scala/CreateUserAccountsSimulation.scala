@@ -42,7 +42,7 @@ object Create {
     }
 
   val write = exec(http("Create New User")
-    .put("/_user/hostname-${userId}")
+    .put("/_user/user-hostname-id")
     .headers(post_headers)
     .body(RawFileBody("create_user_request.txt")))
 }
