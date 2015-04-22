@@ -1,1 +1,1 @@
-{"password":"password","admin_channels":"[${userChannel}]"}
+{"password":"password","admin_channels":["${userChannel}"]}
