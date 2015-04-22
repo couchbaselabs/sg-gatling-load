@@ -50,7 +50,7 @@ object Create {
   val write = feed(userIdFeeder).exec( session => session.set("hostname", hostname))
     .exec( session => session.set("userChannel", userChannel))
     .exec(http("Create New User")
-    .put("/_user/user2-${hostname}-${userId}")
+    .put("/_user/user3-${hostname}-${userId}")
     .headers(post_headers)
     .body(ELFileBody("create_user_request.txt")).asJSON)
 }
