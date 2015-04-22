@@ -39,7 +39,7 @@
 							<!--<configFolder>src/test/resources</configFolder-->
 							<dataFolder>${simulation.dataFolder}</dataFolder>
 							<resultsFolder>${simulation.resultsFolder}</resultsFolder>
-							<requestBodiesFolder>${simulation.requestBodiesFolder}</requestBodiesFolder>
+							<bodiesFolder>${simulation.bodiesFolder}</bodiesFolder>
 							<simulationsFolder>${simulation.simulationsFolder}</simulationsFolder>
 							<simulationClass>${simulation.simulationClass}</simulationClass>
 							<noReports>true</noReports>
@@ -61,7 +61,7 @@
         	<properties>
 				<simulation.dataFolder>src/test/resources/data</simulation.dataFolder>
     			<simulation.resultsFolder>target/gatling/results</simulation.resultsFolder>
-    			<simulation.requestBodiesFolder>src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.bodiesFolder>src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>computerdatabase.SGimulation</simulation.simulationClass>
     		</properties>
@@ -71,7 +71,7 @@
 			<properties>
 				<simulation.dataFolder>themes/gateload-sim/src/test/resources/data</simulation.dataFolder>
     			<simulation.resultsFolder>themes/gateload-sim/target/gatling/results</simulation.resultsFolder>
-    			<simulation.requestBodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>CreateUserAccountsSimulation</simulation.simulationClass>
 			</properties>
@@ -81,7 +81,7 @@
 			<properties>
 				<simulation.dataFolder>themes/gateload-sim/src/test/resources/data</simulation.dataFolder>
     			<simulation.resultsFolder>themes/gateload-sim/target/gatling/results</simulation.resultsFolder>
-    			<simulation.requestBodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>themes/gateload-sim/src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>WritersConsumersSimulation</simulation.simulationClass>
 			</properties>
@@ -91,7 +91,7 @@
 			<properties>
 				<simulation.dataFolder>themes/slow-memory-leak/src/test/resources/data</simulation.dataFolder>
     			<simulation.resultsFolder>themes/slow-memory-leak/target/gatling/results</simulation.resultsFolder>
-    			<simulation.requestBodiesFolder>themes/slow-memory-leak/src/test/resources/request-bodies</simulation.requestBodiesFolder>
+    			<simulation.bodiesFolder>themes/slow-memory-leak/src/test/resources/request-bodies</simulation.bodiesFolder>
     			<simulation.simulationsFolder>themes/slow-memory-leak/src/test/scala</simulation.simulationsFolder>
     			<simulation.simulationClass>BasicSimulation</simulation.simulationClass>
 			</properties>
