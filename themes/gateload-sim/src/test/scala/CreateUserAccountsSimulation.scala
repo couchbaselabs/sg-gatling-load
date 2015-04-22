@@ -34,15 +34,13 @@ object Create {
   // first, let's build a Feeder that set an numeric id:
   val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
-  feed(userIdFeeder).exec { session =>
+  val write = feed(userIdFeeder).exec ( session =>
       //val userId = session("userId").as[Int]
       //val id = iterations * userIdFeeder
       session.set("hostname", hostname)
 
-    }
-
-  val write = exec(http("Create New User")
-    .put("/_user/user-hostname-id")
+  ).exec(http("Create New User")
+    .put("/_user/user-${hostname}-id")
     .headers(post_headers)
     .body(RawFileBody("create_user_request.txt")))
 }
