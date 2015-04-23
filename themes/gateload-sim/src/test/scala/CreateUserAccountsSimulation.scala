@@ -28,8 +28,9 @@ class CreateUserAccountsSimulation extends Simulation {
     .connection("keep-alive")
     .contentTypeHeader("application/json")
     .userAgentHeader("CouchbaseLite/1.0-Debug (iOS)")
+    .maxConnectionsPerHost(1)
 
-    val writers = scenario("Create Users").exec(Create.write)
+    val writers = scenario("Create Test Users").exec(Create.write)
 
     setUp(
       writers.inject(rampUsers(numPullers + numPushers) over (rampUpIntervalMs milliseconds))
@@ -45,12 +46,12 @@ object Create {
   // first, let's build a Feeder that set an numeric id:
   val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
-  val userChannel = "channel-"+hostname
+  val channelActiveUsers=scala.Int.unbox(java.lang.Integer.getInteger("channelActiveUsers",40))
 
   val write = feed(userIdFeeder).exec( session => session.set("hostname", hostname))
-    .exec( session => session.set("userChannel", userChannel))
+    .exec( session => session.set("userChannel", "channel-"+hostname+"-"+scala.Int.unbox(session("userId").as[Integer])/channelActiveUsers))
     .exec(http("Create New User")
-    .put("/_user/user3-${hostname}-${userId}")
+    .put("/_user/user-${hostname}-${userId}")
     .headers(post_headers)
     .body(ELFileBody("create_user_request.txt")).asJSON)
 }
