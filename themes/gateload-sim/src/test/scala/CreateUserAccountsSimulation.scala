@@ -20,7 +20,7 @@ class CreateUserAccountsSimulation extends Simulation {
   val maxUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",60000))
 
   val httpConf = http
-    .baseURL("http://"+targetHost+":4985/"+database) // Here is the root for all relative URLs
+    .baseURLs("http://"+targetHost+":4985/"+database) // Here is the root for all relative URLs
     .inferHtmlResources()
     .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
