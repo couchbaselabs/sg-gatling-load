@@ -5,7 +5,7 @@ import scala.util.Random
 
 class CreateUserAccountsSimulation extends Simulation {
 
-  val targetHost=java.lang.System.getProperty("targetHost","localhost")
+  val targetHosts=java.lang.System.getProperty("targetHosts","localhost")
   val database=java.lang.System.getProperty("database","sync_gateway")
   val docSize=scala.Int.unbox(java.lang.Integer.getInteger("docSize",1024))
   val rampUpIntervalMs=scala.Int.unbox(java.lang.Integer.getInteger("rampUpIntervalMs",3600000))
@@ -19,8 +19,12 @@ class CreateUserAccountsSimulation extends Simulation {
   val minUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",10000))
   val maxUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",60000))
 
+  val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", "http://").concat(":4985/"+database)).toList
+
+  System.err.println("targetURL's = "+targetURLs)
+
   val httpConf = http
-    .baseURLs("http://"+targetHost+":4985/"+database) // Here is the root for all relative URLs
+    .baseURLs(targetURLs)
     .inferHtmlResources()
     .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
