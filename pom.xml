@@ -49,7 +49,7 @@
 									<simulationClass>computerdatabase.SGimulation</simulationClass>
 									<noReports>true</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
 										<arg>-Dusers=20</arg>
 										<arg>-Dramp=100</arg>
@@ -84,7 +84,7 @@
 									<simulationClass>CreateUserAccountsSimulation</simulationClass>
 									<noReports>true</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
 										<arg>-DdocSize=1024</arg>
 										<arg>-DrampUpIntervalMs=3600000</arg>
@@ -128,7 +128,7 @@
 									<simulationClass>WritersConsumersSimulation</simulationClass>
 									<noReports>true</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
 										<arg>-DdocSize=1024</arg>
 										<arg>-DrampUpIntervalMs=3600000</arg>
@@ -172,7 +172,7 @@
 									<simulationClass>SlowMemoryLeakSimulation</simulationClass>
 									<noReports>true</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHost=${simulation.targetHost}</arg>
+                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
 										<arg>-Dusers=20</arg>
 										<arg>-Dramp=100</arg>
