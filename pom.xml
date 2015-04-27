@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<gatling.version>${project.version}</gatling.version>
     	<gatling-plugin.version>2.1.2</gatling-plugin.version>
-    	<simulation.targetHost>localhost</simulation.targetHost>
+    	<simulation.targetHosts>localhost</simulation.targetHosts>
 	</properties>
 
 	<dependencies>
