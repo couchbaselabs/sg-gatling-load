@@ -150,6 +150,50 @@
 			</build>
 		</profile>
 		<profile>
+			<id>todolite-sim</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<!--<configFolder>src/test/resources</configFolder-->
+									<dataFolder>themes/todolite-sim/src/test/resources/data</dataFolder>
+									<resultsFolder>themes/todolite-sim/target/gatling/results</resultsFolder>
+									<bodiesFolder>themes/todolite-sim/src/test/resources/request-bodies</bodiesFolder>
+									<simulationsFolder>themes/todolite-sim/src/test/scala</simulationsFolder>
+									<simulationClass>ToDoLiteSimulation</simulationClass>
+									<noReports>true</noReports>
+                            		<jvmArgs>
+                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
+										<arg>-Ddatabase=db</arg>arg>
+										<arg>-DdocSize=1024</arg>
+										<arg>-DrampUpIntervalMs=3600000</arg>
+										<arg>-DrunTimeMs=7200000</arg>
+										<arg>-DsleepTimeMs=10000</arg>
+										<arg>-DnumPullers=700</arg>
+										<arg>-DnumPushers=300</arg>
+										<arg>-DfeedType=continuous</arg>
+										<arg>-DchannelActiveUsers=40</arg>
+										<arg>-DchannelConcurrentUsers=8</arg>
+										<arg>-DminUserOffTimeMs=10000</arg>
+										<arg>-DmaxUserOffTimeMs=60000</arg>
+                            		</jvmArgs>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>slow-memory-leak</id>
 			<build>
 				<plugins>
