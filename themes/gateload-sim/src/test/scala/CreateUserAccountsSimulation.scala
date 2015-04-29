@@ -5,6 +5,7 @@ import scala.util.Random
 
 class CreateUserAccountsSimulation extends Simulation {
 
+  //Get properties from jVM arguments
   val targetHosts=java.lang.System.getProperty("targetHosts","localhost")
   val database=java.lang.System.getProperty("database","sync_gateway")
   val docSize=scala.Int.unbox(java.lang.Integer.getInteger("docSize",1024))
@@ -19,6 +20,7 @@ class CreateUserAccountsSimulation extends Simulation {
   val minUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",10000))
   val maxUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",60000))
 
+  //Generate a list of target URL's from the list of target hosts
   val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", "http://").concat(":4985/"+database)).toList
 
   System.err.println("targetURL's = "+targetURLs)
@@ -32,12 +34,12 @@ class CreateUserAccountsSimulation extends Simulation {
     .connection("keep-alive")
     .contentTypeHeader("application/json")
     .userAgentHeader("CouchbaseLite/1.0-Debug (iOS)")
-    .maxConnectionsPerHost(1)
+    .extraInfoExtractor(extraInfo => List(extraInfo.response.bodyLength))
 
-    val writers = scenario("Create Test Users").exec(Create.write)
+    val creators = scenario("Create Test Users").exec(Create.write)
 
     setUp(
-      writers.inject(rampUsers(numPullers + numPushers) over (rampUpIntervalMs milliseconds))
+      creators.inject(rampUsers(numPullers + numPushers) over (rampUpIntervalMs milliseconds))
     ).protocols(httpConf)
 }
 
@@ -45,9 +47,10 @@ object Create {
 
   val post_headers = Map("Content-Type" -> "application/json")
 
+  // local hostname is used to uniquely identify users created from this test client
   val hostname = java.net.InetAddress.getLocalHost().getHostName();
 
-  // first, let's build a Feeder that set an numeric id:
+  // feeder that is called once per test user and generates a unique user Id
   val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
   val channelActiveUsers=scala.Int.unbox(java.lang.Integer.getInteger("channelActiveUsers",40))
