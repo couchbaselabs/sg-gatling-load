@@ -39,7 +39,9 @@ class CreateUserAccountsSimulation extends Simulation {
     val creators = scenario("Create Test Users").exec(Create.write)
 
     setUp(
-      creators.inject(rampUsers(numPullers + numPushers) over (rampUpIntervalMs milliseconds))
+      //creators.inject(rampUsers(numPullers + numPushers) over (rampUpIntervalMs milliseconds))
+      creators.inject(constantUsersPerSec((numPullers + numPushers)*1000/rampUpIntervalMs) during(rampUpIntervalMs milliseconds))
+      
     ).protocols(httpConf)
 }
 
