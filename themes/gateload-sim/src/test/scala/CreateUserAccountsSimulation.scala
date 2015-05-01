@@ -40,7 +40,7 @@ class CreateUserAccountsSimulation extends Simulation {
 
     setUp(
       //creators.inject(rampUsers(numPullers + numPushers) over (rampUpIntervalMs milliseconds))
-      creators.inject(constantUsersPerSec((numPullers + numPushers)*1000/rampUpIntervalMs) during(rampUpIntervalMs milliseconds))
+      creators.inject(constantUsersPerSec((numPullers + numPushers)*1100/rampUpIntervalMs) during(rampUpIntervalMs milliseconds))
       
     ).protocols(httpConf)
 }
