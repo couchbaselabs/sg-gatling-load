@@ -47,7 +47,7 @@
 									<bodiesFolder>src/test/resources/request-bodies</bodiesFolder>
 									<simulationsFolder>src/test/scala</simulationsFolder>
 									<simulationClass>computerdatabase.SGimulation</simulationClass>
-									<noReports>true</noReports>
+									<noReports>false</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
@@ -82,7 +82,7 @@
 									<bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</bodiesFolder>
 									<simulationsFolder>themes/gateload-sim/src/test/scala</simulationsFolder>
 									<simulationClass>CreateUserAccountsSimulation</simulationClass>
-									<noReports>true</noReports>
+									<noReports>false</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
@@ -126,7 +126,7 @@
 									<bodiesFolder>themes/gateload-sim/src/test/resources/request-bodies</bodiesFolder>
 									<simulationsFolder>themes/gateload-sim/src/test/scala</simulationsFolder>
 									<simulationClass>WritersConsumersSimulation</simulationClass>
-									<noReports>true</noReports>
+									<noReports>false</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
@@ -170,7 +170,7 @@
 									<bodiesFolder>themes/todolite-sim/src/test/resources/request-bodies</bodiesFolder>
 									<simulationsFolder>themes/todolite-sim/src/test/scala</simulationsFolder>
 									<simulationClass>ToDoLiteSimulation</simulationClass>
-									<noReports>true</noReports>
+									<noReports>false</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
@@ -214,7 +214,7 @@
 									<bodiesFolder>themes/slow-memory-leak/src/test/resources/request-bodies</bodiesFolder>
 									<simulationsFolder>themes/slow-memory-leak/src/test/scala</simulationsFolder>
 									<simulationClass>SlowMemoryLeakSimulation</simulationClass>
-									<noReports>true</noReports>
+									<noReports>false</noReports>
                             		<jvmArgs>
                             			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
 										<arg>-Ddatabase=db</arg>arg>
