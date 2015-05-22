@@ -228,5 +228,40 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>blocking-longpoll</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<!--<configFolder>src/test/resources</configFolder-->
+									<dataFolder>themes/blocking-longpoll/src/test/resources/data</dataFolder>
+									<resultsFolder>themes/blocking-longpoll/target/gatling/results</resultsFolder>
+									<bodiesFolder>themes/blocking-longpoll/src/test/resources/request-bodies</bodiesFolder>
+									<simulationsFolder>themes/blocking-longpoll/src/test/scala</simulationsFolder>
+									<simulationClass>CreateBlockingLongpollSimulation</simulationClass>
+									<noReports>false</noReports>
+                            		<jvmArgs>
+                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
+										<arg>-Ddatabase=db</arg>arg>
+										<arg>-Dusers=20000</arg>
+										<arg>-Dramp=100</arg>
+                            		</jvmArgs>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
