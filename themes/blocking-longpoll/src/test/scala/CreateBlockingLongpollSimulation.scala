@@ -43,7 +43,7 @@ class CreateBlockingLongpollSimulation extends Simulation {
     val creators = scenario("Create blocking longpoll _changes requests").exec(Create.changes)
 
     setUp(
-      creators.inject(constantUsersPerSec(numPushers) during(rampUpIntervalMs milliseconds))
+      creators.inject(rampUsers(numPushers) over(rampUpIntervalMs milliseconds))
     ).protocols(httpConf)
 }
 
