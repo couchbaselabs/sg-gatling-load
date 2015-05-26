@@ -50,5 +50,5 @@ class CreateBlockingLongpollSimulation extends Simulation {
 object Create {
 
   val changes = exec(http("Start blocking longpoll _changes request")
-    .get("/_changes?since=100&feed=longpoll"))
+    .get("/_changes?since=100&heartbeat=60000&feed=longpoll"))
 }
