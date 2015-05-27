@@ -243,7 +243,7 @@
 									<goal>execute</goal>
 								</goals>
 								<configuration>
-									<!--<configFolder>src/test/resources</configFolder-->
+									<configFolder>themes/blocking-longpoll/src/test/resources</configFolder>
 									<dataFolder>themes/blocking-longpoll/src/test/resources/data</dataFolder>
 									<resultsFolder>themes/blocking-longpoll/target/gatling/results</resultsFolder>
 									<bodiesFolder>themes/blocking-longpoll/src/test/resources/request-bodies</bodiesFolder>
