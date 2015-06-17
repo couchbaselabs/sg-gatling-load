@@ -25,7 +25,7 @@ class CreateBlockingLongpollSimulation extends Simulation {
   val maxUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",60000))
 
   //Generate a list of target URL's from the list of target hosts
-  val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", "http://").concat(":4985/"+database)).toList
+  val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", "http://").concat(":4984/"+database)).toList
 
   System.err.println("targetURL's = "+targetURLs)
 
@@ -50,7 +50,7 @@ class CreateBlockingLongpollSimulation extends Simulation {
 object Create {
 
   val changes = forever(exec(http("Start blocking longpoll _changes request")
-    .get("/_changes?since=100&heartbeat=40000&feed=longpoll"))
+    .get("/_changes?since=100000&heartbeat=40000&feed=longpoll"))
     .pause(2 seconds))
-    
+
 }
