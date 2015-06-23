@@ -34,14 +34,14 @@ class CreateBlockingLongpollSimulation extends Simulation {
   val queryParamFeed=java.lang.System.getProperty("queryParamFeed","continuous")
   val queryParamSince=scala.Int.unbox(java.lang.Integer.getInteger("queryParamSince",0))
   val querytParamHeartbeat=scala.Int.unbox(java.lang.Integer.getInteger("queryParamHeartbeat",60000))
-  val querytParamConflicts=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamConflicts"))
-  val querytParamDescending=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamDescending"))
+  val querytParamConflicts=java.lang.Boolean.getBoolean("querytParamConflicts")
+  val querytParamDescending=java.lang.Boolean.getBoolean("querytParamDescending")
   val queryParamEndkey=java.lang.System.getProperty("queryParamEndkey","")
   val queryParamEnd_Key=java.lang.System.getProperty("queryParamEnd_key","")
   val queryParamEndkey_docid=java.lang.System.getProperty("queryParamEndkey_docid","")
   val queryParamEnd_Key_doc_id=java.lang.System.getProperty("queryParamEnd_Key_doc_id","")
-  val querytParamInclude_docs=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamInclude_docs"))
-  val querytParamInclusive_end=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamInclude_docs"))
+  val querytParamInclude_docs=java.lang.Boolean.getBoolean("querytParamInclude_docs")
+  val querytParamInclusive_end=java.lang.Boolean.getBoolean("querytParamInclusive_end")
 
   //Generate a list of target URL's from the list of target hosts
   val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", restApiProtocol+"://").concat(":"+adminRestApiPort+"/"+database)).toList
