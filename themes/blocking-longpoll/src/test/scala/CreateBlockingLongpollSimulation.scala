@@ -18,14 +18,33 @@ class CreateBlockingLongpollSimulation extends Simulation {
   val sleepTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("sleepTimeMs",10000))
   val numPullers=scala.Int.unbox(java.lang.Integer.getInteger("numPullers",700))
   val numPushers=scala.Int.unbox(java.lang.Integer.getInteger("numPushers",300))
-  val feedType=java.lang.System.getProperty("feedType","continuous")
+
   val channelActiveUsers=scala.Int.unbox(java.lang.Integer.getInteger("channelActiveUsers",40))
   val channelConcurrentUsers=java.lang.Integer.getInteger("channelConcurrentUsers",8)
   val minUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",10000))
   val maxUserOffTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("minUserOffTimeMs",60000))
 
+  //HTTP parameters
+  val restApiProtocol=java.lang.System.getProperty("restApiProtocol","http") //http or https
+  val adminRestApiPort=scala.Int.unbox(java.lang.Integer.getInteger("adminRestApiPort",4985))
+  val userRestApiPort=scala.Int.unbox(java.lang.Integer.getInteger("userRestApiPort",4984))
+
+
+  //REST API request Parameters
+  val queryParamFeed=java.lang.System.getProperty("queryParamFeed","continuous")
+  val queryParamSince=scala.Int.unbox(java.lang.Integer.getInteger("queryParamSince",0))
+  val querytParamHeartbeat=scala.Int.unbox(java.lang.Integer.getInteger("queryParamHeartbeat",60000))
+  val querytParamConflicts=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamConflicts"))
+  val querytParamDescending=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamDescending"))
+  val queryParamEndkey=java.lang.System.getProperty("queryParamEndkey","")
+  val queryParamEnd_Key=java.lang.System.getProperty("queryParamEnd_key","")
+  val queryParamEndkey_docid=java.lang.System.getProperty("queryParamEndkey_docid","")
+  val queryParamEnd_Key_doc_id=java.lang.System.getProperty("queryParamEnd_Key_doc_id","")
+  val querytParamInclude_docs=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamInclude_docs"))
+  val querytParamInclusive_end=scala.Int.unbox(java.lang.Boolean.getBoolean("querytParamInclude_docs"))
+
   //Generate a list of target URL's from the list of target hosts
-  val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", "http://").concat(":4984/"+database)).toList
+  val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", restApiProtocol+"://").concat(":"+adminRestApiPort+"/"+database)).toList
 
   System.err.println("targetURL's = "+targetURLs)
 
@@ -49,8 +68,13 @@ class CreateBlockingLongpollSimulation extends Simulation {
 
 object Create {
 
+  //REST API request Parameters
+  val queryParamFeed=java.lang.System.getProperty("requestParamFeed","continuous")
+  val queryParamSince=scala.Int.unbox(java.lang.Integer.getInteger("requestParamSince",0))
+  val queryParamHeartbeat=scala.Int.unbox(java.lang.Integer.getInteger("requestParamHeartbeat",60000))
+
   val changes = forever(exec(http("Start blocking longpoll _changes request")
-    .get("/_changes?since=100000&heartbeat=40000&feed=longpoll"))
+    .get("/_changes?since="+queryParamSince+"&heartbeat="+queryParamHeartbeat+"&feed="+queryParamFeed))
     .pause(2 seconds))
 
 }
