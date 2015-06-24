@@ -71,7 +71,7 @@ class DocsWithHighRevsSimulation extends Simulation {
 
 
   //Generate a list of target URL's from the list of target hosts
-  val targetURLs = testParamTargetHosts.split(",").map(_.trim.replaceFirst("^", httpParamRestApiProtocol+"://").concat(":"+httpParamUserRestApiPort+"/"+testParamDatabase)).toList
+  val targetURLs = testParamTargetHosts.split(",").map(_.trim.replaceFirst("^", httpParamRestApiProtocol+"://").concat(":"+httpParamAdminRestApiPort+"/"+testParamDatabase)).toList
 
   System.err.println("targetURL's = "+targetURLs)
 
@@ -106,16 +106,13 @@ object Create {
   val push = exec(feed(userIdFeeder)).exec(
     http("Create Document Rev 0")
       .put("/doc${userId}")
-    .body(StringBody("""{ "counter": -1 }""")).asJSON
-    .check(jsonPath("$..rev").saveAs("currentrev")
-    )
+      .body(StringBody("""{ "counter": -1 }""")).asJSON
+      .check(jsonPath("$..rev").saveAs("currentrev"))
   ).repeat(10000, "n") {
-
     exec(http("Push new Document Revision")
       .put("/doc${userId}")
       .body(StringBody("""{ "_rev":"${currentrev}", "counter": ${n} }""")).asJSON
-      .check(jsonPath("$..rev").saveAs("currentrev")
-      )
+      .check(jsonPath("$..rev").saveAs("currentrev"))
     ).pause(10)
   }
 
