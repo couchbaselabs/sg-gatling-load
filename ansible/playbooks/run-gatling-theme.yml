@@ -11,7 +11,7 @@
     sudo: no
 
   - name: Run sg-gatling-load theme
-    shell: mvn test -e -P blocking-longpoll -DtestParamNumPullers=0 -DtestParamNumPushers=10000 -DtestParamRampUpIntervalMs=60000 -DtestParamDatabase=reference_data -DhttpParamRestApiProtocol=80 -DqueryParamFeed=longpoll -DqueryParamSince=100000 -DqueryParamHeartbeat=45000 > somelog.txt
+    shell: mvn test -e -P blocking-longpoll -DtestParamNumPullers=0 -DtestParamNumPushers=10000 -DtestParamRampUpIntervalMs=60000 -DtestParamDatabase=reference_data -DhttpParamUserRestApiPort=80 -DqueryParamFeed=longpoll -DqueryParamSince=100000 -DqueryParamHeartbeat=45000 > somelog.txt
     args:
       chdir: /home/projects/sg-gatling-load/
 
