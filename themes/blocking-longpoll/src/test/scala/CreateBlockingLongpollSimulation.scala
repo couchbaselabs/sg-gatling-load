@@ -71,7 +71,7 @@ class CreateBlockingLongpollSimulation extends Simulation {
 
 
   //Generate a list of target URL's from the list of target hosts
-  val targetURLs = targetHosts.split(",").map(_.trim.replaceFirst("^", httpParamRestApiProtocol+"://").concat(":"+httpParamUserRestApiPort+"/"+database)).toList
+  val targetURLs = testParamTargetHosts.split(",").map(_.trim.replaceFirst("^", httpParamRestApiProtocol+"://").concat(":"+httpParamUserRestApiPort+"/"+testParamDatabase)).toList
 
   System.err.println("targetURL's = "+targetURLs)
 
@@ -89,7 +89,7 @@ class CreateBlockingLongpollSimulation extends Simulation {
     val creators = scenario("Create blocking longpoll _changes requests").exec(Create.changes)
 
     setUp(
-      creators.inject(rampUsers(numPushers) over(rampUpIntervalMs milliseconds))
+      creators.inject(rampUsers(testParamNumPushers) over(testParamRampUpIntervalMs milliseconds))
     ).protocols(httpConf)
 }
 
