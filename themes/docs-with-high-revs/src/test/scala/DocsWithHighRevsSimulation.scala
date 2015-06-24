@@ -107,14 +107,14 @@ object Create {
     http("Create Document Rev 0")
       .put("/doc${userId}")
     .body(StringBody("""{ "counter": -1 }""")).asJSON
-    .check(jsonPath("$.rev").saveAs("currentrev")
+    .check(jsonPath("$..rev").saveAs("currentrev")
     )
   ).repeat(10000, "n") {
 
     exec(http("Push new Document Revision")
       .put("/doc${userId}")
       .body(StringBody("""{ "_rev":"${currentrev}", "counter": ${n} }""")).asJSON
-      .check(jsonPath("$.rev").saveAs("currentrev")
+      .check(jsonPath("$..rev").saveAs("currentrev")
       )
     ).pause(10)
   }
