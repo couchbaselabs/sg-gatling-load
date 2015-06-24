@@ -9,79 +9,69 @@ This repo includes two ansible scripts that can be used to orchestrate the load 
 
 ## Pre Requisites
 
-  1. A single server instance that will act as the gatling.io test client
+  1. A desktop/server instance that will be used to run the ansible orchestration scripts
+  2. A single server instance that will act as the gatling.io test client
   2. One or more server instances with Sync Gateway deployed
   3. A named Sync Gateway DB with a sync function that matches the scenario that is being load tested.
 
 ## Setup
 
-  1. gatling.io test client
+  Login to the ansible orchestration host
 
   This host must have [ansible](http://www.ansible.com/home) installed
   
-  Clone this repo onto the management host using the collowing command:
+  Follow the onsite instructions for your hosts OS
+  
+  Install a git client on the this host
+  
+  Clone this git repo onto this host using the collowing command:
   
   ```
   git clone https://github.com/couchbaselabs/sg-gatling-load.git
   ```
   
-  Install JDK and Maven roles
-```
-  ansible-galaxy install geerlingguy.java
-  ansible-galaxy install https://github.com/silpion/ansible-maven.git
-```
-
+  Setup the ansible hosts file, that will be used to connect 
   
-The ansible playbook steps are as follows:
-  1. Install docker onto each server
-  2. Call docker to install a gatling container
-  3. Start the container
-  4. Configure gatling with the load test scenario
-  5. Run the load test
-  6. Retrieve the run logs
-  7. Merge the logs and generate the gatling reports
-
-# Running a load test
-
-
-
-
-
-  2. One or more servers for running the load test clients, the servers may run either of the following OS's
-
-    1. Ubuntu 14.04
-    2. RedHat/Centos 6.5
-
-    These additonal steps must be run on Centos 6.5 to allow docker to run:
-```
-    $ sudo yum-config-manager --enable public_ol6_latest
-    $ sudo yum install device-mapper-event-libs)
-```
-  Create a common user account and password on each server, ensure that the user is a member of the "sudo" group:
+  The path to the hosts file is:
   
   ```
-  $ sudo useradd -m <username>
-  $ sudo passwd <username>
-  $ sudo sudo adduser <username> sudo
+  /etc/ansible/hosts
   ```
-  Add each hosts IP address to the [sg-gatling-load] section of the /etc/ansible/hosts file on the management host.
   
-On the management host change directory to where sg-gatling-load was cloned and run the following command
+  Add the following sections, in each section add the server names or IP addresses:
+  
+  ```
+  [gatling-clients]
+  gatling-client.example.com
 
-## Run Test
+  [gatling-sync-gateway-servers]
+  sg-server1.example.com
+  sg-server2.example.com
+  ```
+  Change directory to ./ansible/playbooks in the cloned repo
 
-```
-$ ansible-playbook --ask-pass --ask-sudo-pass gateloadclients.yml
-```
-
-## Generate Report
+  ```
+  $ cd sg-gatling-load/ansible/playbooks
+  ```
+  
+  Run the ansible playbook to install and configure gatling.io
+  
+  ```
+  $ ansible-playbook configure-gatling.yml
+  ```
+  
+  Once that is complete you can run performance tests:
+  
+  ```
+  $ ansible-playbook --ask-pass --ask-sudo-pass run-gatling-theme.yml
+  ```
 
 ## Adding a new theme
 
 Change directory to
 
 ```
-themes
+./themes
 ```
 Create a new theme using maven architypes
 
