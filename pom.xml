@@ -263,5 +263,40 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>docs-with-high-revs</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>${gatling-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<configFolder>themes/docs-with-high-revs/src/test/resources</configFolder>
+									<dataFolder>themes/docs-with-high-revs/src/test/resources/data</dataFolder>
+									<resultsFolder>themes/docs-with-high-revs/target/gatling/results</resultsFolder>
+									<bodiesFolder>themes/docs-with-high-revs/src/test/resources/request-bodies</bodiesFolder>
+									<simulationsFolder>themes/docs-with-high-revs/src/test/scala</simulationsFolder>
+									<simulationClass>DocsWithHighRevsSimulation</simulationClass>
+									<noReports>false</noReports>
+                            		<jvmArgs>
+                            			<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+										<!-- arg>-DtestParamDatabase=db</arg>arg -->
+										<!-- arg>-testParamNumPushers=20000</arg -->
+										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
+                            		</jvmArgs>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
