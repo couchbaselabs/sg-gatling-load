@@ -1,8 +1,37 @@
 # sg-gatling-load
 Sync Gateway workload generator using gatling.io
 
-The solution uses [ansible](www.ansible.com) to orchestrate the installation and configuration of docker and [gatling](gatling.io) onto a group of Ubuntu and Centos servers (or VM's).
+The solution uses [ansible](www.ansible.com) to orchestrate the installation, configuration and running of [gatling](gatling.io) onto a group of servers (or VM's).
 
+If you are using the [perfcluster-aws](https://github.com/couchbaselabs/perfcluster-aws.git) project to deploy your test clusters, use the ansible scripts provided in that repo.
+
+This repo includes two ansible scripts that can be used to orchestrate the load test against an arbitrary set of hosts.
+
+## Pre Requisites
+
+  1. A single server instance that will act as the gatling.io test client
+  2. One or more server instances with Sync Gateway deployed
+  3. A named Sync Gateway DB with a sync function that matches the scenario that is being load tested.
+
+## Setup
+
+  1. gatling.io test client
+
+  This host must have [ansible](http://www.ansible.com/home) installed
+  
+  Clone this repo onto the management host using the collowing command:
+  
+  ```
+  git clone https://github.com/couchbaselabs/sg-gatling-load.git
+  ```
+  
+  Install JDK and Maven roles
+```
+  ansible-galaxy install geerlingguy.java
+  ansible-galaxy install https://github.com/silpion/ansible-maven.git
+```
+
+  
 The ansible playbook steps are as follows:
   1. Install docker onto each server
   2. Call docker to install a gatling container
@@ -14,29 +43,9 @@ The ansible playbook steps are as follows:
 
 # Running a load test
 
-## Pre Requisites
 
-  1. A Sync Gateway Cluster with a single entry point via a reverse proxy / load balancer
-  2. A named Sync Gateway DB with a sync function that matches the scenario that is being load tested.
-  3. Most tests will expect named user accounts to be pre-defined in Sync Gateway
-  4. Pre-load any data required by the load test
 
-## Setup
 
-  1. A host that will manage the gatling test clients
-
-  This host must have [ansible](http://www.ansible.com/home) installed
-  
-  Clone this repo onto the management host using the collowing command:
-  
-  Install JDK and Maven roles
-```
-  ansible-galaxy install geerlingguy.java
-  ansible-galaxy install https://github.com/silpion/ansible-maven.git
-```
-  ```
-  git clone https://github.com/couchbaselabs/sg-gatling-load.git
-  ```
 
   2. One or more servers for running the load test clients, the servers may run either of the following OS's
 
