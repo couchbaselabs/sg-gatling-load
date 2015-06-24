@@ -1,0 +1,23 @@
+---
+- hosts: gatling-clients
+  remote_user: ec2-user
+  sudo: yes
+
+  tasks:
+
+  - name: Remove local simulation log storage
+    local_action: file  path=/tmp/sg-gatling-load/ state=absent
+    run_once: true
+    sudo: no
+
+  - name: Run sg-gatling-load theme
+    shell: mvn test -e -P blocking-longpoll -DtestParamNumPullers=0 -DtestParamNumPushers=10000 -DtestParamRampUpIntervalMs=60000 -DtestParamDatabase=reference_data -DhttpParamRestApiProtocol=80 -DqueryParamFeed=longpoll -DqueryParamSince=100000 -DqueryParamHeartbeat=45000 > somelog.txt
+    args:
+      chdir: /home/projects/sg-gatling-load/
+
+  - name: Get path to the run results directory
+    shell: 'grep "Please open the following file:" /home/projects/sg-gatling-load/somelog.txt | sed "s/Please open the following file: //" | sed "s/index.html//"'
+    register: results_dir
+
+  - name: Pull simulation.log for run
+    fetch: src={{ results_dir.stdout }}/simulation.log dest=/tmp/sg-gatling-load/ fail-on-missing=yes
