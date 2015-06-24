@@ -95,18 +95,31 @@ class DocsWithHighRevsSimulation extends Simulation {
 
 object Create {
 
-  //REST API request Parameters
-  val queryParamFeed=java.lang.System.getProperty("queryParamFeed","continuous")
-  val queryParamSince=scala.Int.unbox(java.lang.Integer.getInteger("queryParamSince",0))
-  val queryParamHeartbeat=scala.Int.unbox(java.lang.Integer.getInteger("queryParamHeartbeat",60000))
+  val testParamDocSize=scala.Int.unbox(java.lang.Integer.getInteger("testParamDocSize",1024))
+
+  // Random generator
+  val random = new scala.util.Random
+
+  // Generate a random string of length n from the given alphabet
+  def randomString(alphabet: String)(n: Int): String =
+    Stream.continually(random.nextInt(alphabet.size)).map(alphabet).take(n).mkString
+
+  // Generate a random alphabnumeric string of length n
+  def randomAlphanumericString(n: Int) =
+    randomString("abcdefghijklmnopqrstuvwxyz0123456789")(n)
+
+  val payloadString = randomAlphanumericString(testParamDocSize)
 
   // feeder that is called once per test user and generates a unique user Id
   val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
-  val push = exec(feed(userIdFeeder)).exec(
+  val push = exec(session => {
+    val newSession = session.set("payloadString", payloadString)
+    newSession
+    }).exec(feed(userIdFeeder)).exec(
     http("Create Document Rev 0")
       .put("/doc${userId}")
-      .body(StringBody("""{ "counter": -1 }""")).asJSON
+      .body(StringBody("""{ "counter": -1, "payload":"${payloadString}" }""")).asJSON
       .check(jsonPath("$..rev").saveAs("currentrev"))
   ).repeat(10000, "n") {
     exec(http("Push new Document Revision")
