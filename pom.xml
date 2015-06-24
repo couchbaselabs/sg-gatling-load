@@ -49,10 +49,10 @@
 									<simulationClass>computerdatabase.SGimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
-										<arg>-Ddatabase=db</arg>arg>
-										<arg>-Dusers=20</arg>
-										<arg>-Dramp=100</arg>
+										<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+										<!-- arg>-DtestParamDatabase=db</arg>arg -->
+										<!-- arg>-testParamNumPushers=20000</arg -->
+										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -84,19 +84,19 @@
 									<simulationClass>CreateUserAccountsSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
-										<arg>-Ddatabase=db</arg>arg>
-										<arg>-DdocSize=1024</arg>
-										<arg>-DrampUpIntervalMs=3600000</arg>
-										<arg>-DrunTimeMs=7200000</arg>
-										<arg>-DsleepTimeMs=10000</arg>
-										<arg>-DnumPullers=700</arg>
-										<arg>-DnumPushers=300</arg>
-										<arg>-DfeedType=continuous</arg>
-										<arg>-DchannelActiveUsers=40</arg>
-										<arg>-DchannelConcurrentUsers=8</arg>
-										<arg>-DminUserOffTimeMs=10000</arg>
-										<arg>-DmaxUserOffTimeMs=60000</arg>
+                            			<!-- arg>-DtargetHosts=${simulation.targetHosts}</arg -->
+										<!-- arg>-Ddatabase=db</arg>arg -->
+										<!-- arg>-DdocSize=1024</arg -->
+										<!-- arg>-DrampUpIntervalMs=3600000</arg -->
+										<!-- arg>-DrunTimeMs=7200000</arg -->
+										<!-- arg>-DsleepTimeMs=10000</arg -->
+										<!-- arg>-DnumPullers=700</arg -->
+										<!-- arg>-DnumPushers=300</arg -->
+										<!-- arg>-DfeedType=continuous</arg -->
+										<!-- arg>-DchannelActiveUsers=40</arg -->
+										<!-- arg>-DchannelConcurrentUsers=8</arg -->
+										<!-- arg>-DminUserOffTimeMs=10000</arg -->
+										<!-- arg>-DmaxUserOffTimeMs=60000</arg -->
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -128,19 +128,19 @@
 									<simulationClass>WritersConsumersSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
-										<arg>-Ddatabase=db</arg>arg>
-										<arg>-DdocSize=1024</arg>
-										<arg>-DrampUpIntervalMs=3600000</arg>
-										<arg>-DrunTimeMs=7200000</arg>
-										<arg>-DsleepTimeMs=10000</arg>
-										<arg>-DnumPullers=700</arg>
-										<arg>-DnumPushers=300</arg>
-										<arg>-DfeedType=continuous</arg>
-										<arg>-DchannelActiveUsers=40</arg>
-										<arg>-DchannelConcurrentUsers=8</arg>
-										<arg>-DminUserOffTimeMs=10000</arg>
-										<arg>-DmaxUserOffTimeMs=60000</arg>
+                            			<!-- arg>-DtargetHosts=${simulation.targetHosts}</arg -->
+										<!-- arg>-Ddatabase=db</arg>arg -->
+										<!-- arg>-DdocSize=1024</arg -->
+										<!-- arg>-DrampUpIntervalMs=3600000</arg -->
+										<!-- arg>-DrunTimeMs=7200000</arg -->
+										<!-- arg>-DsleepTimeMs=10000</arg -->
+										<!-- arg>-DnumPullers=700</arg -->
+										<!-- arg>-DnumPushers=300</arg -->
+										<!-- arg>-DfeedType=continuous</arg -->
+										<!-- arg>-DchannelActiveUsers=40</arg -->
+										<!-- arg>-DchannelConcurrentUsers=8</arg -->
+										<!-- arg>-DminUserOffTimeMs=10000</arg -->
+										<!-- arg>-DmaxUserOffTimeMs=60000</arg -->
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -172,19 +172,19 @@
 									<simulationClass>ToDoLiteSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
-										<arg>-Ddatabase=db</arg>arg>
-										<arg>-DdocSize=1024</arg>
-										<arg>-DrampUpIntervalMs=3600000</arg>
-										<arg>-DrunTimeMs=7200000</arg>
-										<arg>-DsleepTimeMs=10000</arg>
-										<arg>-DnumPullers=700</arg>
-										<arg>-DnumPushers=300</arg>
-										<arg>-DfeedType=continuous</arg>
-										<arg>-DchannelActiveUsers=40</arg>
-										<arg>-DchannelConcurrentUsers=8</arg>
-										<arg>-DminUserOffTimeMs=10000</arg>
-										<arg>-DmaxUserOffTimeMs=60000</arg>
+                            			<!-- arg>-DtargetHosts=${simulation.targetHosts}</arg -->
+										<!-- arg>-Ddatabase=db</arg>arg -->
+										<!-- arg>-DdocSize=1024</arg -->
+										<!-- arg>-DrampUpIntervalMs=3600000</arg -->
+										<!-- arg>-DrunTimeMs=7200000</arg -->
+										<!-- arg>-DsleepTimeMs=10000</arg -->
+										<!-- arg>-DnumPullers=700</arg -->
+										<!-- arg>-DnumPushers=300</arg -->
+										<!-- arg>-DfeedType=continuous</arg -->
+										<!-- arg>-DchannelActiveUsers=40</arg -->
+										<!-- arg>-DchannelConcurrentUsers=8</arg -->
+										<!-- arg>-DminUserOffTimeMs=10000</arg -->
+										<!-- arg>-DmaxUserOffTimeMs=60000</arg -->
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -216,10 +216,10 @@
 									<simulationClass>SlowMemoryLeakSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
-										<arg>-Ddatabase=db</arg>arg>
-										<arg>-Dusers=20</arg>
-										<arg>-Dramp=100</arg>
+										<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+										<!-- arg>-DtestParamDatabase=db</arg>arg -->
+										<!-- arg>-testParamNumPushers=20000</arg -->
+										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
                             		</jvmArgs>
 								</configuration>
 							</execution>
@@ -251,10 +251,10 @@
 									<simulationClass>CreateBlockingLongpollSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<arg>-DtargetHosts=${simulation.targetHosts}</arg>
-										<arg>-Ddatabase=db</arg>arg>
-										<arg>-Dusers=20000</arg>
-										<arg>-Dramp=100</arg>
+                            			<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+										<!-- arg>-DtestParamDatabase=db</arg>arg -->
+										<!-- arg>-testParamNumPushers=20000</arg -->
+										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
                             		</jvmArgs>
 								</configuration>
 							</execution>
