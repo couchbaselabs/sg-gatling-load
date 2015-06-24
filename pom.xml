@@ -49,7 +49,7 @@
 									<simulationClass>computerdatabase.SGimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-										<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+										<arg>-DtestParamTargetHosts=${simulation.targetHosts}</arg>
 										<!-- arg>-DtestParamDatabase=db</arg>arg -->
 										<!-- arg>-testParamNumPushers=20000</arg -->
 										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
@@ -84,7 +84,7 @@
 									<simulationClass>CreateUserAccountsSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<!-- arg>-DtargetHosts=${simulation.targetHosts}</arg -->
+                            			<arg>-DtestParamTargetHosts=${simulation.targetHosts}</arg>
 										<!-- arg>-Ddatabase=db</arg>arg -->
 										<!-- arg>-DdocSize=1024</arg -->
 										<!-- arg>-DrampUpIntervalMs=3600000</arg -->
@@ -128,7 +128,7 @@
 									<simulationClass>WritersConsumersSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<!-- arg>-DtargetHosts=${simulation.targetHosts}</arg -->
+                            			<arg>-DtestParamTargetHosts=${simulation.targetHosts}</arg>
 										<!-- arg>-Ddatabase=db</arg>arg -->
 										<!-- arg>-DdocSize=1024</arg -->
 										<!-- arg>-DrampUpIntervalMs=3600000</arg -->
@@ -172,7 +172,7 @@
 									<simulationClass>ToDoLiteSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<!-- arg>-DtargetHosts=${simulation.targetHosts}</arg -->
+                            			<arg>-DtestParamTargetHosts=${simulation.targetHosts}</arg>
 										<!-- arg>-Ddatabase=db</arg>arg -->
 										<!-- arg>-DdocSize=1024</arg -->
 										<!-- arg>-DrampUpIntervalMs=3600000</arg -->
@@ -216,7 +216,7 @@
 									<simulationClass>SlowMemoryLeakSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-										<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+										<arg>-DtestParamTargetHosts=${simulation.targetHosts}</arg>
 										<!-- arg>-DtestParamDatabase=db</arg>arg -->
 										<!-- arg>-testParamNumPushers=20000</arg -->
 										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
@@ -251,7 +251,7 @@
 									<simulationClass>CreateBlockingLongpollSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+                            			<arg>-DtestParamTargetHosts=${simulation.targetHosts}</arg>
 										<!-- arg>-DtestParamDatabase=db</arg>arg -->
 										<!-- arg>-testParamNumPushers=20000</arg -->
 										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
@@ -286,7 +286,7 @@
 									<simulationClass>DocsWithHighRevsSimulation</simulationClass>
 									<noReports>false</noReports>
                             		<jvmArgs>
-                            			<!-- arg>-testParamTargetHosts=${simulation.targetHosts}</arg -->
+                            			<arg>-DtestParamTargetHosts=${simulation.targetHosts}</arg>
 										<!-- arg>-DtestParamDatabase=db</arg>arg -->
 										<!-- arg>-testParamNumPushers=20000</arg -->
 										<!-- arg>-DtestParamRampUpIntervalMs=100000</arg -->
