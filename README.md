@@ -60,12 +60,31 @@ This repo includes two ansible scripts that can be used to orchestrate the load 
   $ ansible-playbook configure-gatling.yml
   ```
   
-  Once that is complete you can run performance tests:
+  ## Run performance tests:
+  
+  Edit run-gatling-theme.yml and modify the 'remote_user' property to the user account to login to the remote servers as:
+  
+  If you are using credentials to login add the --ask-pass and --ask-sudo-pass parameter and provide the passwords when requested.
   
   ```
   $ ansible-playbook --ask-pass --ask-sudo-pass run-gatling-theme.yml
   ```
-
+  
+  If you have setup a private key for access then run the playbook using:
+ ```
+  $ ansible-playbook run-gatling-theme.yml
+  ```
+  To run a different theme, copy the playbook to a new name and edit the file:
+  
+  Change the line beginning with:
+  ```
+  shell: mvn test -e -P ..... > somelog.txt
+  ```
+  Set the name of the theme you want to run and add override any default parameters you want to change e.g.
+  ```
+  shell: mvn test -e -P todolite-sim -DhttpParamUserRestApiPort=80 > somelog.txt
+  ```
+  
 ## Adding a new theme
 
 Change directory to
