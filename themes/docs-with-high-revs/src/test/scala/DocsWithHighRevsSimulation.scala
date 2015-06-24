@@ -96,6 +96,7 @@ class DocsWithHighRevsSimulation extends Simulation {
 object Create {
 
   val testParamDocSize=scala.Int.unbox(java.lang.Integer.getInteger("testParamDocSize",1024))
+  val testParamSleepTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("testParamSleepTimeMs",10000))
 
   // Random generator
   val random = new scala.util.Random
@@ -126,7 +127,6 @@ object Create {
       .put("/doc${userId}")
       .body(StringBody("""{ "_rev":"${currentrev}", "counter": ${n}, "payload":"${payloadString}" }""")).asJSON
       .check(jsonPath("$..rev").saveAs("currentrev"))
-    ).pause(10)
+    ).pause(testParamSleepTimeMs milliseconds)
   }
-
 }
