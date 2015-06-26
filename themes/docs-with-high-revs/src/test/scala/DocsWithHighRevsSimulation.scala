@@ -125,7 +125,7 @@ object Create {
   ).repeat(10000, "n") {
     exec(http("Push new Document Revision")
       .put("/doc${userId}")
-      .body(StringBody("""{ "_rev":"${currentrev}", "counter": ${n}, "payload":"${payloadString}" }""")).asJSON
+      .body(StringBody("""{ "_rev":"${currentrev}", "counter": ${n}, "payload":"${userId}${n}${payloadString}" }""")).asJSON
       .check(jsonPath("$..rev").saveAs("currentrev"))
     ).pause(testParamSleepTimeMs milliseconds)
   }
