@@ -120,7 +120,7 @@ object Create {
     }).exec(feed(userIdFeeder)).exec(
     http("Create Document Rev 0")
       .put("/doc${userId}")
-      .body(StringBody("""{ "counter": -1, "payload":"${userId}${n}${payloadString}" }""")).asJSON
+      .body(StringBody("""{ "counter": -1, "payload":"${userId}${payloadString}" }""")).asJSON
       .check(jsonPath("$..rev").saveAs("currentrev"))
   ).repeat(10000, "n") {
     exec(http("Push new Document Revision")
