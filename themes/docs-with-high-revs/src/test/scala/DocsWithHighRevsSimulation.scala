@@ -13,6 +13,8 @@ class DocsWithHighRevsSimulation extends Simulation {
   val testParamTargetHosts=java.lang.System.getProperty("testParamTargetHosts","localhost")
   val testParamDatabase=java.lang.System.getProperty("testParamDatabase","sync_gateway")
   val testParamDocSize=scala.Int.unbox(java.lang.Integer.getInteger("testParamDocSize",1024))
+  val testParamPayloadSize=scala.Int.unbox(java.lang.Integer.getInteger("testParamPayloadSize",1024))
+  val testParamNumPayloads=scala.Int.unbox(java.lang.Integer.getInteger("testParamNumPayloads",1))
   val testParamRampUpIntervalMs=scala.Int.unbox(java.lang.Integer.getInteger("testParamRampUpIntervalMs",3600000))
   val testParamRunTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("testParamRunTimeMs",7200000))
   val testParamSleepTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("testParamSleepTimeMs",10000))
@@ -95,9 +97,10 @@ class DocsWithHighRevsSimulation extends Simulation {
 
 object Create {
 
-  val testParamDocSize=scala.Int.unbox(java.lang.Integer.getInteger("testParamDocSize",1024))
+  //val testParamDocSize=scala.Int.unbox(java.lang.Integer.getInteger("testParamDocSize",1024))
   val testParamSleepTimeMs=scala.Int.unbox(java.lang.Integer.getInteger("testParamSleepTimeMs",10000))
-
+  val testParamPayloadSize=scala.Int.unbox(java.lang.Integer.getInteger("testParamPayloadSize",1024))
+  val testParamNumPayloads=scala.Int.unbox(java.lang.Integer.getInteger("testParamNumPayloads",1))
   // Random generator
   val random = new scala.util.Random
 
@@ -109,23 +112,35 @@ object Create {
   def randomAlphanumericString(n: Int) =
     randomString("abcdefghijklmnopqrstuvwxyz0123456789")(n)
 
-  val payloadString = randomAlphanumericString(testParamDocSize)
+  val payloadString = randomAlphanumericString(testParamPayloadSize)
+
+
+  val sb = new StringBuilder();
+
+  for (i <- 1 to testParamNumPayloads) {
+    sb.append("\"property").append(i).append("\":\"").append(payloadString).append(i).append("\"");
+    if(i < testParamNumPayloads) {
+      sb.append(",");
+    }
+  }
+
+  val payloadProperties = sb.toString();
 
   // feeder that is called once per test user and generates a unique user Id
   val userIdFeeder = Iterator.from(0).map(i => Map("userId" -> i))
 
   val push = exec(session => {
-    val newSession = session.set("payloadString", payloadString)
+    val newSession = session.set("payloadProperties", payloadProperties)
     newSession
     }).exec(feed(userIdFeeder)).exec(
     http("Create Document Rev 0")
       .put("/doc${userId}")
-      .body(StringBody("""{ "counter": -1, "payload":"${userId}${payloadString}" }""")).asJSON
+      .body(StringBody("""{ "counter": -1, ${payloadProperties} }""")).asJSON //payload":"${userId}${payloadString}" }""")).asJSON
       .check(jsonPath("$..rev").saveAs("currentrev"))
   ).repeat(10000, "n") {
     exec(http("Push new Document Revision")
       .put("/doc${userId}")
-      .body(StringBody("""{ "_rev":"${currentrev}", "counter": ${n}, "payload":"${userId}${n}${payloadString}" }""")).asJSON
+      .body(StringBody("""{ "_rev":"${currentrev}", "counter": ${n}, ${payloadProperties} }""")).asJSON //"payload":"${userId}${n}${payloadString}" }""")).asJSON
       .check(jsonPath("$..rev").saveAs("currentrev"))
     ).pause(testParamSleepTimeMs milliseconds)
   }
