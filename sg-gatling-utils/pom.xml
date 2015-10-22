@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.couchbase</groupId>
+  <artifactId>sg-gatling-utils</artifactId>
+  <version>2.1.2</version>
+
+  <properties>
+  	<scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
+  	<gatling.version>${project.version}</gatling.version>
+  </properties>
+
+<dependencies>
+	<dependency>
+		<groupId>io.gatling.highcharts</groupId>
+		<artifactId>gatling-charts-highcharts</artifactId>
+		<version>${gatling.version}</version>
+	</dependency>
+</dependencies>
+
+  <build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>scala-maven-plugin</artifactId>
+					<version>${scala-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<version>${scala-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
